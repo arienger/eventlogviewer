@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="section content-title-group">
-      <h2 class="title">{{ title }}</h2>
+      <h2 class="title">Hendelse</h2>
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">{{ hero.fullName }}</p>
@@ -36,11 +36,7 @@
             @click="cancelHero()"
           >
             <i class="fas fa-undo"></i>
-            <span>Cancel</span>
-          </button>
-          <button class="link card-footer-item" @click="saveHero()">
-            <i class="fas fa-save"></i>
-            <span>Save</span>
+            <span>Tilbake</span>
           </button>
         </footer>
       </div>
@@ -82,7 +78,7 @@ export default {
       return !this.id;
     },
     title() {
-      return `${this.isAddMode ? 'Add' : 'Edit'} Hero`;
+      return `${this.isAddMode ? 'Add' : 'Edit'} Hendelse`;
     },
   },
   methods: {

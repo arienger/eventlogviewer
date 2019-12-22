@@ -2,6 +2,7 @@
   <div class="navbar-brand">
     <a
       class="navbar-item"
+      title="NAV Dokumentasjon"
       href="https://docs.microsoft.com/en-us/dynamics-nav/index"
       target="_blank"
       rel="noopener noreferrer"

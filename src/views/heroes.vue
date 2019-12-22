@@ -3,48 +3,37 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Heroes</h2>
+          <h2 class="title">Hendelser</h2>
           <button class="button refresh-button" @click="loadHeroes()">
             <i class="fas fa-sync"></i>
           </button>
-          <router-link
-            tag="button"
-            class="button add-button"
-            :to="{ name: 'hero-detail', params: { id: 0 } }"
-          >
-            <i class="fas fa-plus"></i>
-          </router-link>
-          <ul>
-            <li v-for="hero in heroes" :key="hero.id">
-              <div class="card">
-                <div class="card-content">
-                  <div class="content">
-                    <div :key="hero.name" class="name">
-                      {{ hero.firstName }} {{ hero.lastName }}
-                    </div>
-                    <div class="description">{{ hero.description }}</div>
-                  </div>
-                </div>
-                <footer class="card-footer">
-                  <button
-                    class="link card-footer-item"
-                    @click="askToDelete(hero)"
-                  >
-                    <i class="fas fa-trash"></i>
-                    <span>Delete</span>
-                  </button>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Navn</th>
+                <th>Detaljer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="hero in heroes" :key="hero.id">
+                <td>{{ hero.id }}</td>
+                <td>{{ hero.firstName }} {{ hero.lastName }}</td>
+                <td>
                   <router-link
                     tag="button"
-                    class="link card-footer-item"
+                    title="Se detaljer"
+                    class="button"
                     :to="{ name: 'hero-detail', params: { id: hero.id } }"
                   >
-                    <i class="fas fa-check"></i>
-                    <span>Select</span>
+                    <span class="icon">
+                      <i class="fas fa-search-plus"></i>
+                    </span>
                   </router-link>
-                </footer>
-              </div>
-            </li>
-          </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="notification is-info" v-show="message">{{ message }}</div>
       </div>
