@@ -36,12 +36,6 @@
   ],
   "villains": [
     {
-      "id": 10,
-      "firstName": "Malcolm",
-      "lastName": "Reynolds",
-      "description": "I don't believe there is a power in the verse that can stop Kaylee from being cheerful."
-    },
-    {
       "id": 20,
       "firstName": "Kaylee",
       "lastName": "Frye",

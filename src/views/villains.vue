@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Villains</h2>
+          <h2 class="title">Serverinstanser</h2>
           <button class="button refresh-button" @click="loadVillains()">
             <i class="fas fa-sync"></i>
           </button>
@@ -14,37 +14,43 @@
           >
             <i class="fas fa-plus"></i>
           </router-link>
-          <ul>
-            <li v-for="villain in villains" :key="villain.id">
-              <div class="card">
-                <div class="card-content">
-                  <div class="content">
-                    <div :key="villain.name" class="name">
-                      {{ villain.firstName }} {{ villain.lastName }}
-                    </div>
-                    <div class="description">{{ villain.description }}</div>
-                  </div>
-                </div>
-                <footer class="card-footer">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Servernavn</th>
+                <th>Basis URL</th>
+                <th>Detaljer</th>
+                <th>Slett</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="villain in villains" :key="villain.id">
+                <td>{{ villain.id }}</td>
+                <td>{{ villain.firstName }} {{ villain.lastName }}</td>
+                <td>
+                  <router-link
+                    tag="button"
+                    title="Se detaljer"
+                    class="button"
+                    :to="{ name: 'villain-detail', params: { id: villain.id } }"
+                  >
+                    <span class="icon">
+                      <i class="fas fa-search-plus"></i>
+                    </span>
+                  </router-link>
+                </td>
+                <td>
                   <button
+                    title="Slett denne serverinstansen"
                     class="link card-footer-item"
                     @click="askToDelete(villain)"
                   >
                     <i class="fas fa-trash"></i>
-                    <span>Delete</span>
                   </button>
-                  <router-link
-                    tag="button"
-                    class="link card-footer-item"
-                    :to="{ name: 'villain-detail', params: { id: villain.id } }"
-                  >
-                    <i class="fas fa-check"></i>
-                    <span>Select</span>
-                  </router-link>
-                </footer>
-              </div>
-            </li>
-          </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="notification is-info" v-show="message">{{ message }}</div>
       </div>

@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Hendelser</h2>
+          <h2 class="title">Logginger</h2>
           <button class="button refresh-button" @click="loadHeroes()">
             <i class="fas fa-sync"></i>
           </button>
