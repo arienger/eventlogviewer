@@ -12,21 +12,21 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/heroes',
+      redirect: '/events',
     },
     {
-      path: '/heroes',
-      name: 'heroes',
+      path: '/events',
+      name: 'events',
       component: () =>
-        import(/* webpackChunkName: "bundle.heroes" */ './views/heroes.vue'),
+        import(/* webpackChunkName: "bundle.events" */ './views/events.vue'),
     },
     {
-      path: '/heroes/:id',
-      name: 'hero-detail',
+      path: '/events/:id',
+      name: 'event-detail',
       // props: true,
       props: parseProps,
       component: () =>
-        import(/* webpackChunkName: "bundle.heroes" */ './views/hero-detail.vue'),
+        import(/* webpackChunkName: "bundle.events" */ './views/event-detail.vue'),
     },
     {
       path: '/villains',

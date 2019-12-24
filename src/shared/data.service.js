@@ -5,63 +5,63 @@ import { inputDateFormat } from './constants';
 
 import { API } from './config';
 
-const getHeroes = async function() {
+const getEvents = async function() {
   try {
-    const response = await axios.get(`${API}/heroes`);
+    const response = await axios.get(`${API}/events`);
 
     let data = parseList(response);
 
-    const heroes = data.map(h => {
+    const events = data.map(h => {
       h.originDate = format(h.originDate, inputDateFormat);
       h.fullName = `${h.firstName} ${h.lastName}`;
       return h;
     });
-    return heroes;
+    return events;
   } catch (error) {
     console.error(error);
     return [];
   }
 };
 
-const getHero = async function(id) {
+const getEvent = async function(id) {
   try {
-    const response = await axios.get(`${API}/heroes/${id}`);
-    let hero = parseItem(response, 200);
-    hero.fullName = `${hero.firstName} ${hero.lastName}`;
-    return hero;
+    const response = await axios.get(`${API}/events/${id}`);
+    let event = parseItem(response, 200);
+    event.fullName = `${event.firstName} ${event.lastName}`;
+    return event;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const updateHero = async function(hero) {
+const updateEvent = async function(event) {
   try {
-    const response = await axios.put(`${API}/heroes/${hero.id}`, hero);
-    const updatedHero = parseItem(response, 200);
-    return updatedHero;
+    const response = await axios.put(`${API}/events/${event.id}`, event);
+    const updatedEvent = parseItem(response, 200);
+    return updatedEvent;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const addHero = async function(hero) {
+const addEvent = async function(event) {
   try {
-    const response = await axios.post(`${API}/heroes`, hero);
-    const addedHero = parseItem(response, 201);
-    return addedHero;
+    const response = await axios.post(`${API}/events`, event);
+    const addedEvent = parseItem(response, 201);
+    return addedEvent;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const deleteHero = async function(hero) {
+const deleteEvent = async function(event) {
   try {
-    const response = await axios.delete(`${API}/heroes/${hero.id}`);
+    const response = await axios.delete(`${API}/events/${event.id}`);
     parseItem(response, 200);
-    return hero.id;
+    return event.id;
   } catch (error) {
     console.error(error);
     return null;
@@ -149,11 +149,11 @@ export const parseItem = (response, code) => {
 };
 
 export const dataService = {
-  getHeroes,
-  getHero,
-  updateHero,
-  addHero,
-  deleteHero,
+  getEvents,
+  getEvent,
+  updateEvent,
+  addEvent,
+  deleteEvent,
   getVillains,
   getVillain,
   updateVillain,

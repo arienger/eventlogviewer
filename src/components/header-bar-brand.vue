@@ -10,9 +10,9 @@
       <i class="fab js-logo fa-hubspot fa-2x" aria-hidden="true" />
     </a>
     <div class="navbar-item nav-home">
-      <span class="tour">LOGGINGER</span>
+      <span class="tour">HENDELSER</span>
       <span class="of">FRA</span>
-      <span class="heroes">NAV</span>
+      <span class="events">NAV</span>
     </div>
     <button
       class="link navbar-burger burger"

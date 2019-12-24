@@ -1,5 +1,5 @@
 {
-  "heroes": [
+  "events": [
     {
       "id": 10,
       "firstName": "Ella",
@@ -36,18 +36,6 @@
   ],
   "villains": [
     {
-      "id": 20,
-      "firstName": "Kaylee",
-      "lastName": "Frye",
-      "description": "No power in the 'verse can stop me."
-    },
-    {
-      "id": 30,
-      "firstName": "Hoban",
-      "lastName": "Washburne",
-      "description": "I don't mean to alarm anybody, but I think we're being followed."
-    },
-    {
       "id": 40,
       "firstName": "Zoë",
       "lastName": "Washburne",
@@ -76,12 +64,6 @@
       "firstName": "River",
       "lastName": "Tam",
       "description": "Call me if anyone interesting shows up"
-    },
-    {
-      "id": 90,
-      "firstName": "Jayne",
-      "lastName": "Cobb",
-      "description": "Ten percent of nothin' is ... let me do the math here ... nothin' into nothin' ... carry the nothin'"
     }
   ]
 }

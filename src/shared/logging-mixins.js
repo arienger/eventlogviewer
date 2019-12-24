@@ -25,10 +25,10 @@ export const lifecycleHooks = {
   },
 };
 
-export const heroWatchers = {
+export const eventWatchers = {
   // Watchers
   watch: {
-    selectedHero: {
+    selectedEvent: {
       immediate: true,
       deep: true,
       handler(newValue, oldValue) {

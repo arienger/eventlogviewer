@@ -3,8 +3,8 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Logginger</h2>
-          <button class="button refresh-button" @click="loadHeroes()">
+          <h2 class="title">Hendelser</h2>
+          <button class="button refresh-button" @click="loadEvents()">
             <i class="fas fa-sync"></i>
           </button>
           <table class="table">
@@ -16,15 +16,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="hero in heroes" :key="hero.id">
-                <td>{{ hero.id }}</td>
-                <td>{{ hero.firstName }} {{ hero.lastName }}</td>
+              <tr v-for="event in events" :key="event.id">
+                <td>{{ event.id }}</td>
+                <td>{{ event.firstName }} {{ event.lastName }}</td>
                 <td>
                   <router-link
                     tag="button"
                     title="Se detaljer"
                     class="button"
-                    :to="{ name: 'hero-detail', params: { id: hero.id } }"
+                    :to="{ name: 'event-detail', params: { id: event.id } }"
                   >
                     <span class="icon">
                       <i class="fas fa-search-plus"></i>
@@ -42,7 +42,7 @@
       :message="modalMessage"
       :isOpen="showModal"
       @handleNo="closeModal"
-      @handleYes="deleteHero"
+      @handleYes="deleteEvent"
     >
     </Modal>
   </div>
@@ -53,10 +53,10 @@ import { mapActions, mapState } from 'vuex';
 import Modal from '@/components/modal';
 
 export default {
-  name: 'Heroes',
+  name: 'Events',
   data() {
     return {
-      heroToDelete: null,
+      eventToDelete: null,
       message: '',
       showModal: false,
     };
@@ -65,38 +65,38 @@ export default {
     Modal,
   },
   async created() {
-    await this.loadHeroes();
+    await this.loadEvents();
   },
   methods: {
-    ...mapActions(['getHeroesAction', 'deleteHeroAction']),
-    askToDelete(hero) {
-      this.heroToDelete = hero;
+    ...mapActions(['getEventsAction', 'deleteEventAction']),
+    askToDelete(event) {
+      this.eventToDelete = event;
       this.showModal = true;
     },
     closeModal() {
       this.showModal = false;
     },
-    async deleteHero() {
+    async deleteEvent() {
       this.closeModal();
-      if (this.heroToDelete) {
-        await this.deleteHeroAction(this.heroToDelete);
+      if (this.eventToDelete) {
+        await this.deleteEventAction(this.eventToDelete);
       }
-      await this.loadHeroes();
+      await this.loadEvents();
     },
-    async loadHeroes() {
-      this.message = 'getting the heroes, please be patient';
-      await this.getHeroesAction();
+    async loadEvents() {
+      this.message = 'Vent, henter hendelser...';
+      await this.getEventsAction();
       this.message = '';
     },
   },
   computed: {
-    ...mapState(['heroes']),
+    ...mapState(['events']),
     modalMessage() {
       const name =
-        this.heroToDelete && this.heroToDelete.fullName
-          ? this.heroToDelete.fullName
+        this.eventToDelete && this.eventToDelete.fullName
+          ? this.eventToDelete.fullName
           : '';
-      return `Would you like to delete ${name} ?`;
+      return `Vil du slette ${name} ?`;
     },
   },
 };

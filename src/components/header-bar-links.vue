@@ -3,10 +3,20 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a :href="github" target="_blank" rel="noopener noreferrer" title="GitHub (åpen kildekode)">
+          <a
+            :href="github"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub (åpen kildekode)"
+          >
             <i class="fab fa-github fa-2x" aria-hidden="true"></i>
           </a>
-          <a :href="confluence" target="_blank" rel="noopener noreferrer" title="Dokumentasjon (innlogging)">
+          <a
+            :href="confluence"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Dokumentasjon (Pålogging kreves)"
+          >
             <i class="fab fa-leanpub fa-2x" aria-hidden="true"></i>
           </a>
         </div>

@@ -3,10 +3,10 @@ import Vuex from 'vuex';
 
 import { dataService } from '../shared';
 import {
-  ADD_HERO,
-  DELETE_HERO,
-  GET_HEROES,
-  UPDATE_HERO,
+  ADD_EVENT,
+  DELETE_EVENT,
+  GET_EVENTS,
+  UPDATE_EVENT,
   ADD_VILLAIN,
   DELETE_VILLAIN,
   GET_VILLAINS,
@@ -16,24 +16,24 @@ import {
 Vue.use(Vuex);
 
 const state = () => ({
-  heroes: [],
+  events: [],
   villains: [],
 });
 
 const mutations = {
-  [ADD_HERO](state, hero) {
-    state.heroes.unshift(hero); // mutable addition
+  [ADD_EVENT](state, event) {
+    state.events.unshift(event); // mutable addition
   },
-  [UPDATE_HERO](state, hero) {
-    const index = state.heroes.findIndex(h => h.id === hero.id);
-    state.heroes.splice(index, 1, hero);
-    state.heroes = [...state.heroes];
+  [UPDATE_EVENT](state, event) {
+    const index = state.events.findIndex(h => h.id === event.id);
+    state.events.splice(index, 1, event);
+    state.events = [...state.events];
   },
-  [GET_HEROES](state, heroes) {
-    state.heroes = heroes;
+  [GET_EVENTS](state, event) {
+    state.events = event;
   },
-  [DELETE_HERO](state, heroId) {
-    state.heroes = [...state.heroes.filter(p => p.id !== heroId)];
+  [DELETE_EVENT](state, eventId) {
+    state.events = [...state.events.filter(p => p.id !== eventId)];
   },
   [ADD_VILLAIN](state, villain) {
     state.villains.unshift(villain); // mutable addition
@@ -53,21 +53,21 @@ const mutations = {
 
 const actions = {
   // actions let us get to ({ state, getters, commit, dispatch }) {
-  async addHeroAction({ commit }, hero) {
-    const addedHero = await dataService.addHero(hero);
-    commit(ADD_HERO, addedHero);
+  async addEventAction({ commit }, event) {
+    const addedEvent = await dataService.addEvent(event);
+    commit(ADD_EVENT, addedEvent);
   },
-  async deleteHeroAction({ commit }, hero) {
-    const deletedHeroId = await dataService.deleteHero(hero);
-    commit(DELETE_HERO, deletedHeroId);
+  async deleteEventAction({ commit }, event) {
+    const deletedEventId = await dataService.deleteEvent(event);
+    commit(DELETE_EVENT, deletedEventId);
   },
-  async getHeroesAction({ commit }) {
-    const heroes = await dataService.getHeroes();
-    commit(GET_HEROES, heroes);
+  async getEventsAction({ commit }) {
+    const events = await dataService.getEvents();
+    commit(GET_EVENTS, events);
   },
-  async updateHeroAction({ commit }, hero) {
-    const updatedHero = await dataService.updateHero(hero);
-    commit(UPDATE_HERO, updatedHero);
+  async updateEventAction({ commit }, event) {
+    const updatedEvent = await dataService.updateEvent(event);
+    commit(UPDATE_EVENT, updatedEvent);
   },
   async addVillainAction({ commit }, villain) {
     const addedVillain = await dataService.addVillain(villain);
@@ -89,7 +89,7 @@ const actions = {
 
 const getters = {
   // parameterized getters are not cached. so this is just a convenience to get the state.
-  getHeroById: state => id => state.heroes.find(h => h.id === id),
+  getEventById: state => id => state.events.find(h => h.id === id),
   getVillainById: state => id => state.villains.find(v => v.id === id),
 };
 

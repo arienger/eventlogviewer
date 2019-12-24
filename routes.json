@@ -1,5 +1,5 @@
 {
   "/api/*": "/$1",
-  "/hero": "/heroes",
+  "/event": "/events",
   "/reset": "/reset"
 }

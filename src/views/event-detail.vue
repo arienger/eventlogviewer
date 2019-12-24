@@ -4,28 +4,28 @@
       <h2 class="title">Hendelse</h2>
       <div class="card">
         <header class="card-header">
-          <p class="card-header-title">{{ hero.fullName }}</p>
+          <p class="card-header-title">{{ event.fullName }}</p>
         </header>
         <div class="card-content">
           <div class="content">
             <div class="field">
               <label class="label" for="id">id</label>
-              <label class="input" name="id" readonly>{{ hero.id }}</label>
+              <label class="input" name="id" readonly>{{ event.id }}</label>
             </div>
             <div class="field">
               <label class="label" for="firstName">first name</label>
-              <input class="input" name="firstName" v-model="hero.firstName" />
+              <input class="input" name="firstName" v-model="event.firstName" />
             </div>
             <div class="field">
               <label class="label" for="lastName">last name</label>
-              <input class="input" name="lastName" v-model="hero.lastName" />
+              <input class="input" name="lastName" v-model="event.lastName" />
             </div>
             <div class="field">
               <label class="label" for="description">description</label>
               <input
                 class="input"
                 name="description"
-                v-model="hero.description"
+                v-model="event.description"
               />
             </div>
           </div>
@@ -33,7 +33,7 @@
         <footer class="card-footer">
           <button
             class="link card-footer-item cancel-button"
-            @click="cancelHero()"
+            @click="cancelEvent()"
           >
             <i class="fas fa-undo"></i>
             <span>Tilbake</span>
@@ -48,7 +48,7 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'HeroDetail',
+  name: 'EventDetail',
   props: {
     id: {
       type: Number,
@@ -57,23 +57,23 @@ export default {
   },
   data() {
     return {
-      hero: {},
+      event: {},
     };
   },
   created() {
     if (this.isAddMode) {
-      this.hero = {
+      this.event = {
         id: undefined,
         firstName: '',
         lastName: '',
         description: '',
       };
     } else {
-      this.hero = { ...this.getHeroById(this.id) };
+      this.event = { ...this.getEventById(this.id) };
     }
   },
   computed: {
-    ...mapGetters(['getHeroById']),
+    ...mapGetters(['getEventById']),
     isAddMode() {
       return !this.id;
     },
@@ -82,15 +82,15 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['updateHeroAction', 'addHeroAction']),
-    cancelHero() {
-      this.$router.push({ name: 'heroes' });
+    ...mapActions(['updateEventAction', 'addEventAction']),
+    cancelEvent() {
+      this.$router.push({ name: 'events' });
     },
-    async saveHero() {
-      this.hero.id
-        ? await this.updateHeroAction(this.hero)
-        : await this.addHeroAction(this.hero);
-      this.$router.push({ name: 'heroes' });
+    async saveEvent() {
+      this.event.id
+        ? await this.updateEventAction(this.event)
+        : await this.addEventAction(this.event);
+      this.$router.push({ name: 'events' });
     },
   },
 };
