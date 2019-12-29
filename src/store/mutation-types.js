@@ -1,7 +1,7 @@
-export const GET_EVENTS = 'getEvents';
-export const ADD_EVENT = 'addEvent';
-export const UPDATE_EVENT = 'updateEvent';
-export const DELETE_EVENT = 'deleteEvent';
+export const GET_EVENTS = 'getEventLoggings';
+export const ADD_EVENT = 'addEventLogging';
+export const UPDATE_EVENT = 'updateEventLogging';
+export const DELETE_EVENT = 'deleteEventLogging';
 export const GET_VILLAINS = 'getVillains';
 export const ADD_VILLAIN = 'addVillain';
 export const UPDATE_VILLAIN = 'updateVillain';

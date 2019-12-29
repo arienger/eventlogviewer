@@ -16,24 +16,24 @@ import {
 Vue.use(Vuex);
 
 const state = () => ({
-  events: [],
+  eventloggings: [],
   villains: [],
 });
 
 const mutations = {
-  [ADD_EVENT](state, event) {
-    state.events.unshift(event); // mutable addition
+  [ADD_EVENT](state, eventlogging) {
+    state.eventloggings.unshift(eventlogging); // mutable addition
   },
-  [UPDATE_EVENT](state, event) {
-    const index = state.events.findIndex(h => h.id === event.id);
-    state.events.splice(index, 1, event);
-    state.events = [...state.events];
+  [UPDATE_EVENT](state, eventlogging) {
+    const index = state.eventloggings.findIndex(h => h.id === eventlogging.id);
+    state.eventloggings.splice(index, 1, eventlogging);
+    state.eventloggings = [...state.eventloggings];
   },
-  [GET_EVENTS](state, event) {
-    state.events = event;
+  [GET_EVENTS](state, eventloggings) {
+    state.eventloggings = eventloggings;
   },
   [DELETE_EVENT](state, eventId) {
-    state.events = [...state.events.filter(p => p.id !== eventId)];
+    state.eventloggings = [...state.eventloggings.filter(p => p.id !== eventId)];
   },
   [ADD_VILLAIN](state, villain) {
     state.villains.unshift(villain); // mutable addition
@@ -53,20 +53,20 @@ const mutations = {
 
 const actions = {
   // actions let us get to ({ state, getters, commit, dispatch }) {
-  async addEventAction({ commit }, event) {
-    const addedEvent = await dataService.addEvent(event);
+  async addEventLoggingAction({ commit }, eventlogging) {
+    const addedEvent = await dataService.addEventLogging(eventlogging);
     commit(ADD_EVENT, addedEvent);
   },
-  async deleteEventAction({ commit }, event) {
-    const deletedEventId = await dataService.deleteEvent(event);
+  async deleteEventLoggingAction({ commit }, eventlogging) {
+    const deletedEventId = await dataService.deleteEventLogging(eventlogging);
     commit(DELETE_EVENT, deletedEventId);
   },
-  async getEventsAction({ commit }) {
-    const events = await dataService.getEvents();
+  async getEventLoggingsAction({ commit }) {
+    const events = await dataService.getEventLoggings();
     commit(GET_EVENTS, events);
   },
-  async updateEventAction({ commit }, event) {
-    const updatedEvent = await dataService.updateEvent(event);
+  async updateEventLoggingAction({ commit }, eventlogging) {
+    const updatedEvent = await dataService.updateEventLogging(eventlogging);
     commit(UPDATE_EVENT, updatedEvent);
   },
   async addVillainAction({ commit }, villain) {
@@ -89,8 +89,10 @@ const actions = {
 
 const getters = {
   // parameterized getters are not cached. so this is just a convenience to get the state.
-  getEventById: state => id => state.events.find(h => h.id === id),
-  getVillainById: state => id => state.villains.find(v => v.id === id),
+  getEventById: state => id =>
+    state.eventloggings.find(eventlogging => eventlogging.id === id),
+  getVillainById: state => id =>
+    state.villains.find(villian => villian.id === id),
 };
 
 export default new Vuex.Store({

@@ -12,16 +12,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/events',
+      redirect: '/eventloggings',
     },
     {
-      path: '/events',
-      name: 'events',
+      path: '/eventloggings',
+      name: 'eventloggings',
       component: () =>
-        import(/* webpackChunkName: "bundle.events" */ './views/events.vue'),
+        import(/* webpackChunkName: "bundle.events" */ './views/eventloggings.vue'),
     },
     {
-      path: '/events/:id',
+      path: '/eventloggings/:id',
       name: 'event-detail',
       // props: true,
       props: parseProps,

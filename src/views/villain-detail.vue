@@ -54,6 +54,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import { logger } from '@/shared/logger';
 
 export default {
   name: 'VillainDetail',
@@ -77,7 +78,9 @@ export default {
         description: '',
       };
     } else {
+      logger.info(`Looking for VillainId: ${this.id}`);
       this.villain = { ...this.getVillainById(this.id) };
+      logger.info(`Found VillainId: ${this.villain.id}`);
     }
   },
   computed: {

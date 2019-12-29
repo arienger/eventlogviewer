@@ -4,28 +4,20 @@
       <h2 class="title">Hendelse</h2>
       <div class="card">
         <header class="card-header">
-          <p class="card-header-title">{{ event.fullName }}</p>
+          <p class="card-header-title">{{ eventlogging.shortmessage }}</p>
         </header>
         <div class="card-content">
           <div class="content">
             <div class="field">
               <label class="label" for="id">id</label>
-              <label class="input" name="id" readonly>{{ event.id }}</label>
+              <label class="input" name="id" readonly>{{ eventlogging.id }}</label>
             </div>
             <div class="field">
-              <label class="label" for="firstName">first name</label>
-              <input class="input" name="firstName" v-model="event.firstName" />
-            </div>
-            <div class="field">
-              <label class="label" for="lastName">last name</label>
-              <input class="input" name="lastName" v-model="event.lastName" />
-            </div>
-            <div class="field">
-              <label class="label" for="description">description</label>
+              <label class="label" for="errormessage">Årsak (lang)</label>
               <input
                 class="input"
-                name="description"
-                v-model="event.description"
+                name="errormessage"
+                v-model="eventlogging.longmessage"
               />
             </div>
           </div>
@@ -46,6 +38,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import { logger } from '@/shared/logger';
 
 export default {
   name: 'EventDetail',
@@ -57,19 +50,18 @@ export default {
   },
   data() {
     return {
-      event: {},
+      eventlogging: {},
     };
   },
   created() {
     if (this.isAddMode) {
-      this.event = {
+      this.eventlogging = {
         id: undefined,
-        firstName: '',
-        lastName: '',
-        description: '',
       };
     } else {
-      this.event = { ...this.getEventById(this.id) };
+      logger.info(`Looking for EventId: ${this.id}`);
+      this.eventlogging = { ...this.getEventById(this.id) };
+      logger.info(`Found EventId: ${this.eventlogging.id}`);
     }
   },
   computed: {
@@ -84,13 +76,13 @@ export default {
   methods: {
     ...mapActions(['updateEventAction', 'addEventAction']),
     cancelEvent() {
-      this.$router.push({ name: 'events' });
+      this.$router.push({ name: 'eventloggings' });
     },
     async saveEvent() {
-      this.event.id
-        ? await this.updateEventAction(this.event)
-        : await this.addEventAction(this.event);
-      this.$router.push({ name: 'events' });
+      this.eventlogging.id
+        ? await this.updateEventAction(this.eventlogging)
+        : await this.addEventAction(this.eventlogging);
+      this.$router.push({ name: 'eventloggings' });
     },
   },
 };

@@ -5,39 +5,39 @@ import { inputDateFormat } from './constants';
 
 import { API } from './config';
 
-const getEvents = async function() {
+const getEventLoggings = async function() {
   try {
-    const response = await axios.get(`${API}/events`);
+    const response = await axios.get(`${API}/eventloggings`);
 
     let data = parseList(response);
 
-    const events = data.map(h => {
-      h.originDate = format(h.originDate, inputDateFormat);
-      h.fullName = `${h.firstName} ${h.lastName}`;
-      return h;
+    const eventloggings = data.map(e => {
+      return e;
     });
-    return events;
+    return eventloggings;
   } catch (error) {
     console.error(error);
     return [];
   }
 };
 
-const getEvent = async function(id) {
+const getEventLogging = async function(id) {
   try {
-    const response = await axios.get(`${API}/events/${id}`);
-    let event = parseItem(response, 200);
-    event.fullName = `${event.firstName} ${event.lastName}`;
-    return event;
+    const response = await axios.get(`${API}/eventloggings/${id}`);
+    let eventLogging = parseItem(response, 200);
+    return eventLogging;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const updateEvent = async function(event) {
+const updateEventLogging = async function(eventLogging) {
   try {
-    const response = await axios.put(`${API}/events/${event.id}`, event);
+    const response = await axios.put(
+      `${API}/eventloggings/${eventLogging.id}`,
+      eventLogging
+    );
     const updatedEvent = parseItem(response, 200);
     return updatedEvent;
   } catch (error) {
@@ -46,9 +46,9 @@ const updateEvent = async function(event) {
   }
 };
 
-const addEvent = async function(event) {
+const addEventLogging = async function(eventLogging) {
   try {
-    const response = await axios.post(`${API}/events`, event);
+    const response = await axios.post(`${API}/eventloggings`, eventLogging);
     const addedEvent = parseItem(response, 201);
     return addedEvent;
   } catch (error) {
@@ -57,11 +57,13 @@ const addEvent = async function(event) {
   }
 };
 
-const deleteEvent = async function(event) {
+const deleteEventLogging = async function(eventLogging) {
   try {
-    const response = await axios.delete(`${API}/events/${event.id}`);
+    const response = await axios.delete(
+      `${API}/eventloggings/${eventLogging.id}`
+    );
     parseItem(response, 200);
-    return event.id;
+    return eventLogging.id;
   } catch (error) {
     console.error(error);
     return null;
@@ -149,11 +151,11 @@ export const parseItem = (response, code) => {
 };
 
 export const dataService = {
-  getEvents,
-  getEvent,
-  updateEvent,
-  addEvent,
-  deleteEvent,
+  getEventLoggings,
+  getEventLogging,
+  updateEventLogging,
+  addEventLogging,
+  deleteEventLogging,
   getVillains,
   getVillain,
   updateVillain,

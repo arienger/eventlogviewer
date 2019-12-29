@@ -1,37 +1,44 @@
 {
-  "events": [
+  "eventloggings": [
     {
       "id": 10,
-      "firstName": "Ella",
-      "lastName": "Papa",
-      "capeCounter": 1,
-      "originDate": "1996-06-06",
-      "description": "fashionista",
-      "fullName": "Ella Papa"
+      "server": "10.0.0.0",
+      "serverinstance": "Mestergruppen",
+      "severity": "ERROR",
+      "timestamp": "20191224141000",
+      "source": "aaa.OnRun",
+      "shortmessage": "short messsage id 10",
+      "longmessage": "fsdfjklsdajfkljsalkdfjksajdkfl sdfkjsdaklfjksldjf ksdjfklsdjfklsjdfkl skdljfksldjfk"
     },
     {
       "id": 20,
-      "firstName": "Madelyn",
-      "lastName": "Papa",
-      "capeCounter": 3,
-      "originDate": "08/01/1998",
-      "description": "the cat whisperer"
+      "server": "20.0.0.0",
+      "serverinstance": "Stangeskovene",
+      "severity": "ERROR",
+      "timestamp": "20191224142000",
+      "source": "bbb.OnRun",
+      "shortmessage": "short messsage id 20",
+      "longmessage": "sd dskl sdkjsd sdfkjf skdjfks sdfkjsk sdfksk"
     },
     {
       "id": 30,
-      "firstName": "Haley",
-      "lastName": "Papa",
-      "capeCounter": 2,
-      "originDate": "09/01/1999",
-      "description": "pen wielder"
+      "server": "30.0.0.0",
+      "serverinstance": "XL-Bygg",
+      "severity": "ERROR",
+      "timestamp": "20191224143000",
+      "source": "ccc.OnRun",
+      "shortmessage": "short messsage id 30",
+      "longmessage": "itu rietuei eritu rteri i retiuo retioo terooo itretio ertio ertoeirtoi "
     },
     {
       "id": 40,
-      "firstName": "Landon",
-      "lastName": "Papa",
-      "capeCounter": 0,
-      "originDate": "10/01/2000",
-      "description": "arc trooper"
+      "server": "40.0.0.0",
+      "serverinstance": "XL-Nett",
+      "severity": "ERROR",
+      "timestamp": "20191224144000",
+      "source": "ddd.OnRun",
+      "shortmessage": "short messsage id 40",
+      "longmessage": "445894358 45934 ktrjk90 986 n566439%%/7/ 84rtikn "
     }
   ],
   "villains": [

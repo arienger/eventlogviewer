@@ -11,20 +11,26 @@
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Navn</th>
-                <th>Detaljer</th>
+                <th>Tidspunkt</th>
+                <th>Alvorlighetsgrad</th>
+                <th>Årsak (kort)</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="event in events" :key="event.id">
-                <td>{{ event.id }}</td>
-                <td>{{ event.firstName }} {{ event.lastName }}</td>
+              <tr v-for="eventlogging in eventloggings" :key="eventlogging.id">
+                <td>{{ eventlogging.id }}</td>
+                <td>{{ eventlogging.timestamp }}</td>
+                <td>{{ eventlogging.severity }}</td>
+                <td>{{ eventlogging.shortmessage }}</td>
                 <td>
                   <router-link
                     tag="button"
                     title="Se detaljer"
                     class="button"
-                    :to="{ name: 'event-detail', params: { id: event.id } }"
+                    :to="{
+                      name: 'event-detail',
+                      params: { id: eventlogging.id },
+                    }"
                   >
                     <span class="icon">
                       <i class="fas fa-search-plus"></i>
@@ -42,7 +48,7 @@
       :message="modalMessage"
       :isOpen="showModal"
       @handleNo="closeModal"
-      @handleYes="deleteEvent"
+      @handleYes="deleteEventLogging"
     >
     </Modal>
   </div>
@@ -53,7 +59,7 @@ import { mapActions, mapState } from 'vuex';
 import Modal from '@/components/modal';
 
 export default {
-  name: 'Events',
+  name: 'Eventloggings',
   data() {
     return {
       eventToDelete: null,
@@ -68,7 +74,7 @@ export default {
     await this.loadEvents();
   },
   methods: {
-    ...mapActions(['getEventsAction', 'deleteEventAction']),
+    ...mapActions(['getEventLoggingsAction', 'deleteEventLoggingAction']),
     askToDelete(event) {
       this.eventToDelete = event;
       this.showModal = true;
@@ -76,21 +82,21 @@ export default {
     closeModal() {
       this.showModal = false;
     },
-    async deleteEvent() {
+    async deleteEventLogging() {
       this.closeModal();
       if (this.eventToDelete) {
-        await this.deleteEventAction(this.eventToDelete);
+        await this.deleteEventLoggingAction(this.eventToDelete);
       }
       await this.loadEvents();
     },
     async loadEvents() {
       this.message = 'Vent, henter hendelser...';
-      await this.getEventsAction();
+      await this.getEventLoggingsAction();
       this.message = '';
     },
   },
   computed: {
-    ...mapState(['events']),
+    ...mapState(['eventloggings']),
     modalMessage() {
       const name =
         this.eventToDelete && this.eventToDelete.fullName
