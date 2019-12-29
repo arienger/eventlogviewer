@@ -2,8 +2,8 @@
   "eventloggings": [
     {
       "id": 10,
-      "server": "10.0.0.0",
-      "serverinstance": "Mestergruppen",
+      "nexstepApiServerId": 110,
+      "nexstepApiServerName": "XL-Nett",
       "severity": "ERROR",
       "timestamp": "20191224141000",
       "source": "aaa.OnRun",
@@ -12,8 +12,8 @@
     },
     {
       "id": 20,
-      "server": "20.0.0.0",
-      "serverinstance": "Stangeskovene",
+      "nexstepApiServerId": 110,
+      "nexstepApiServerName": "XL-Nett",
       "severity": "ERROR",
       "timestamp": "20191224142000",
       "source": "bbb.OnRun",
@@ -22,8 +22,8 @@
     },
     {
       "id": 30,
-      "server": "30.0.0.0",
-      "serverinstance": "XL-Bygg",
+      "nexstepApiServerId": 120,
+      "nexstepApiServerName": "Mestergruppen",
       "severity": "ERROR",
       "timestamp": "20191224143000",
       "source": "ccc.OnRun",
@@ -32,8 +32,8 @@
     },
     {
       "id": 40,
-      "server": "40.0.0.0",
-      "serverinstance": "XL-Nett",
+      "nexstepApiServerId": 140,
+      "nexstepApiServerName": "Stangeskovene",
       "severity": "ERROR",
       "timestamp": "20191224144000",
       "source": "ddd.OnRun",
@@ -43,34 +43,30 @@
   ],
   "villains": [
     {
-      "id": 40,
-      "firstName": "Zoë",
-      "lastName": "Washburne",
-      "description": "First rule of battle, little one ... don't ever let them know where you are."
+      "id": 110,
+      "baseurl": "http://xlnett:80",
+      "name": "XL-Nett",
+      "description": "Nexstep-API server for XL-Nett-selskaper xxxx",
+      "originDate": "Invalid Date",
+      "fullName": "undefined undefined"
     },
     {
-      "id": 50,
-      "firstName": "Inara",
-      "lastName": "Serra",
-      "description": "It wasn't entirely a disaster"
+      "id": 120,
+      "baseurl": "http://mestergruppen:80",
+      "name": "Mestergruppen",
+      "description": "Nexstep-API server for Mestergruppen-selskaper"
     },
     {
-      "id": 60,
-      "firstName": "Simon",
-      "lastName": "Tam",
-      "description": "This must be what going mad feels like."
+      "id": 130,
+      "baseurl": "http://xlbygg:80",
+      "name": "XL-Bygg",
+      "description": "Nexstep-API server for XL-Bygg-selskaper"
     },
     {
-      "id": 70,
-      "firstName": "Shepherd",
-      "lastName": "Book",
-      "description": "Oh, I got heathens aplenty right here."
-    },
-    {
-      "id": 80,
-      "firstName": "River",
-      "lastName": "Tam",
-      "description": "Call me if anyone interesting shows up"
+      "id": 140,
+      "baseurl": "http://stangeskovene:80",
+      "name": "Stangeskovene",
+      "description": "Nexstep-API server for Stangeskovene-selskaper"
     }
   ]
 }

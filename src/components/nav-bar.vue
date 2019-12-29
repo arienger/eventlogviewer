@@ -3,7 +3,7 @@
     <p class="menu-label">Meny</p>
     <ul class="menu-list">
       <router-link to="/eventloggings">Hendelser</router-link>
-      <router-link to="/villains">Serverinstanser</router-link>
+      <router-link to="/villains">Nexstep API-servere</router-link>
       <router-link to="/about">Om</router-link>
     </ul>
   </nav>

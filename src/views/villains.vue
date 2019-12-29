@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Serverinstanser</h2>
+          <h2 class="title">Nexstep API-servere</h2>
           <button class="button refresh-button" @click="loadVillains()">
             <i class="fas fa-sync"></i>
           </button>
@@ -17,8 +17,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Servernavn</th>
-                <th>Basis URL</th>
+                <th>NexstepAPI server Id</th>
+                <th>NexstepAPI navn</th>
                 <th>Detaljer</th>
                 <th>Slett</th>
               </tr>
@@ -26,7 +26,7 @@
             <tbody>
               <tr v-for="villain in villains" :key="villain.id">
                 <td>{{ villain.id }}</td>
-                <td>{{ villain.firstName }} {{ villain.lastName }}</td>
+                <td>{{ villain.name }}</td>
                 <td>
                   <router-link
                     tag="button"
@@ -41,7 +41,7 @@
                 </td>
                 <td>
                   <button
-                    title="Slett denne serverinstansen"
+                    title="Slett denne referansen til NexstepAPI server?"
                     class="link card-footer-item"
                     @click="askToDelete(villain)"
                   >
@@ -58,6 +58,7 @@
     <Modal
       :message="modalMessage"
       :isOpen="showModal"
+      :title="Bekreft"
       @handleNo="closeModal"
       @handleYes="deleteVillain"
     >
@@ -101,7 +102,7 @@ export default {
       await this.loadVillains();
     },
     async loadVillains() {
-      this.message = 'getting the villains, please be patient';
+      this.message = 'Vent, henter Nexstep-API serverdefinisjoner';
       await this.getVillainsAction();
       this.message = '';
     },
@@ -110,10 +111,10 @@ export default {
     ...mapState(['villains']),
     modalMessage() {
       const name =
-        this.villainToDelete && this.villainToDelete.fullName
-          ? this.villainToDelete.fullName
+        this.villainToDelete && this.villainToDelete.id
+          ? this.villainToDelete.name
           : '';
-      return `Would you like to delete ${name} ?`;
+      return `Vil du slette ${name} ?`;
     },
   },
 };

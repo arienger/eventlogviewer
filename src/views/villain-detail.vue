@@ -4,7 +4,7 @@
       <h2 class="title">{{ title }}</h2>
       <div class="card">
         <header class="card-header">
-          <p class="card-header-title">{{ villain.fullName }}</p>
+          <p class="card-header-title">{{ villain.name }}</p>
         </header>
         <div class="card-content">
           <div class="content">
@@ -13,16 +13,12 @@
               <label class="input" name="id" readonly>{{ villain.id }}</label>
             </div>
             <div class="field">
-              <label class="label" for="firstName">first name</label>
-              <input
-                class="input"
-                name="firstName"
-                v-model="villain.firstName"
-              />
+              <label class="label" for="name">name</label>
+              <input class="input" name="name" v-model="villain.name" />
             </div>
             <div class="field">
-              <label class="label" for="lastName">last name</label>
-              <input class="input" name="lastName" v-model="villain.lastName" />
+              <label class="label" for="baseurl">baseurl</label>
+              <input class="input" name="baseurl" v-model="villain.baseurl" />
             </div>
             <div class="field">
               <label class="label" for="description">description</label>
@@ -73,8 +69,8 @@ export default {
     if (this.isAddMode) {
       this.villain = {
         id: undefined,
-        firstName: '',
-        lastName: '',
+        baseurl: '',
+        name: '',
         description: '',
       };
     } else {
@@ -89,7 +85,7 @@ export default {
       return !this.id;
     },
     title() {
-      return `${this.isAddMode ? 'Add' : 'Edit'} Villain`;
+      return `${this.isAddMode ? 'Legg til' : 'Rediger'} Nexstep API-server`;
     },
   },
   methods: {
