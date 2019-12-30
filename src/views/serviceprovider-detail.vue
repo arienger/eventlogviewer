@@ -9,19 +9,19 @@
         <div class="card-content">
           <div class="content">
             <div class="field">
-              <label class="label" for="id">id</label>
+              <label class="label" for="id">Id</label>
               <label class="input" name="id" readonly>{{ villain.id }}</label>
             </div>
             <div class="field">
-              <label class="label" for="name">name</label>
+              <label class="label" for="name">Navn</label>
               <input class="input" name="name" v-model="villain.name" />
             </div>
             <div class="field">
-              <label class="label" for="baseurl">baseurl</label>
+              <label class="label" for="baseurl">Basis URL</label>
               <input class="input" name="baseurl" v-model="villain.baseurl" />
             </div>
             <div class="field">
-              <label class="label" for="description">description</label>
+              <label class="label" for="description">Beskrivelse</label>
               <input
                 class="input"
                 name="description"
@@ -85,7 +85,7 @@ export default {
       return !this.id;
     },
     title() {
-      return `${this.isAddMode ? 'Legg til' : 'Rediger'} Nexstep API-server`;
+      return `${this.isAddMode ? 'Legg til' : 'Rediger'} Servicetilbyder`;
     },
   },
   methods: {

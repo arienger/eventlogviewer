@@ -32,7 +32,7 @@ export default new Router({
       path: '/villains',
       name: 'villains',
       component: () =>
-        import(/* webpackChunkName: "bundle.villains" */ './views/villains.vue'),
+        import(/* webpackChunkName: "bundle.serviceproviders" */ './views/serviceproviders.vue'),
     },
     {
       path: '/villains/:id',
@@ -40,7 +40,7 @@ export default new Router({
       // props: true,
       props: parseProps,
       component: () =>
-        import(/* webpackChunkName: "bundle.villains" */ './views/villain-detail.vue'),
+        import(/* webpackChunkName: "bundle.serviceproviders" */ './views/serviceprovider-detail.vue'),
     },
     {
       path: '/about',

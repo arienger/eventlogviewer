@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Nexstep API-servere</h2>
+          <h2 class="title">Servicetilbydere</h2>
           <button class="button refresh-button" @click="loadVillains()">
             <i class="fas fa-sync"></i>
           </button>
@@ -17,8 +17,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th>NexstepAPI server Id</th>
-                <th>NexstepAPI navn</th>
+                <th>Id</th>
+                <th>Navn</th>
                 <th>Detaljer</th>
                 <th>Slett</th>
               </tr>
@@ -58,7 +58,6 @@
     <Modal
       :message="modalMessage"
       :isOpen="showModal"
-      :title="Bekreft"
       @handleNo="closeModal"
       @handleYes="deleteVillain"
     >
