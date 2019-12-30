@@ -7,17 +7,17 @@ import {
   DELETE_EVENT,
   GET_EVENTS,
   UPDATE_EVENT,
-  ADD_VILLAIN,
-  DELETE_VILLAIN,
-  GET_VILLAINS,
-  UPDATE_VILLAIN,
+  ADD_SERVICEPROVIDER,
+  DELETE_SERVICEPROVIDER,
+  GET_SERVICEPROVIDERS,
+  UPDATE_SERVICEPROVIDER,
 } from './mutation-types';
 
 Vue.use(Vuex);
 
 const state = () => ({
   eventloggings: [],
-  villains: [],
+  serviceproviders: [],
 });
 
 const mutations = {
@@ -33,21 +33,27 @@ const mutations = {
     state.eventloggings = eventloggings;
   },
   [DELETE_EVENT](state, eventId) {
-    state.eventloggings = [...state.eventloggings.filter(p => p.id !== eventId)];
+    state.eventloggings = [
+      ...state.eventloggings.filter(p => p.id !== eventId),
+    ];
   },
-  [ADD_VILLAIN](state, villain) {
-    state.villains.unshift(villain); // mutable addition
+  [ADD_SERVICEPROVIDER](state, serviceprovider) {
+    state.serviceproviders.unshift(serviceprovider); // mutable addition
   },
-  [UPDATE_VILLAIN](state, villain) {
-    const index = state.villains.findIndex(h => h.id === villain.id);
-    state.villains.splice(index, 1, villain);
-    state.villains = [...state.villains];
+  [UPDATE_SERVICEPROVIDER](state, serviceprovider) {
+    const index = state.serviceproviders.findIndex(
+      h => h.id === serviceprovider.id
+    );
+    state.serviceproviders.splice(index, 1, serviceprovider);
+    state.serviceproviders = [...state.serviceproviders];
   },
-  [GET_VILLAINS](state, villains) {
-    state.villains = villains;
+  [GET_SERVICEPROVIDERS](state, serviceproviders) {
+    state.serviceproviders = serviceproviders;
   },
-  [DELETE_VILLAIN](state, villainId) {
-    state.villains = [...state.villains.filter(p => p.id !== villainId)];
+  [DELETE_SERVICEPROVIDER](state, serviceproviderId) {
+    state.serviceproviders = [
+      ...state.serviceproviders.filter(p => p.id !== serviceproviderId),
+    ];
   },
 };
 
@@ -69,21 +75,27 @@ const actions = {
     const updatedEvent = await dataService.updateEventLogging(eventlogging);
     commit(UPDATE_EVENT, updatedEvent);
   },
-  async addVillainAction({ commit }, villain) {
-    const addedVillain = await dataService.addVillain(villain);
-    commit(ADD_VILLAIN, addedVillain);
+  async addServiceproviderAction({ commit }, serviceprovider) {
+    const addedServiceprovider = await dataService.addServiceprovider(
+      serviceprovider
+    );
+    commit(ADD_SERVICEPROVIDER, addedServiceprovider);
   },
-  async deleteVillainAction({ commit }, villain) {
-    const deletedVillainId = await dataService.deleteVillain(villain);
-    commit(DELETE_VILLAIN, deletedVillainId);
+  async deleteServiceproviderAction({ commit }, serviceprovider) {
+    const deletedServiceproviderId = await dataService.deleteServiceprovider(
+      serviceprovider
+    );
+    commit(DELETE_SERVICEPROVIDER, deletedServiceproviderId);
   },
-  async getVillainsAction({ commit }) {
-    const villains = await dataService.getVillains();
-    commit(GET_VILLAINS, villains);
+  async getServiceprovidersAction({ commit }) {
+    const serviceproviders = await dataService.getServiceproviders();
+    commit(GET_SERVICEPROVIDERS, serviceproviders);
   },
-  async updateVillainAction({ commit }, villain) {
-    const updatedVillain = await dataService.updateVillain(villain);
-    commit(UPDATE_VILLAIN, updatedVillain);
+  async updateServiceproviderAction({ commit }, serviceprovider) {
+    const updatedServiceprovider = await dataService.updateServiceprovider(
+      serviceprovider
+    );
+    commit(UPDATE_SERVICEPROVIDER, updatedServiceprovider);
   },
 };
 
@@ -91,8 +103,8 @@ const getters = {
   // parameterized getters are not cached. so this is just a convenience to get the state.
   getEventById: state => id =>
     state.eventloggings.find(eventlogging => eventlogging.id === id),
-  getVillainById: state => id =>
-    state.villains.find(villian => villian.id === id),
+  getServiceproviderById: state => id =>
+    state.serviceproviders.find(serviceprovider => serviceprovider.id === id),
 };
 
 export default new Vuex.Store({

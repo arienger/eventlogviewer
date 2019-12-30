@@ -4,13 +4,13 @@
       <div class="column is-8">
         <div class="section content-title-group">
           <h2 class="title">Servicetilbydere</h2>
-          <button class="button refresh-button" @click="loadVillains()">
+          <button class="button refresh-button" @click="loadServiceproviders()">
             <i class="fas fa-sync"></i>
           </button>
           <router-link
             tag="button"
             class="button add-button"
-            :to="{ name: 'villain-detail', params: { id: 0 } }"
+            :to="{ name: 'serviceprovider-detail', params: { id: 0 } }"
           >
             <i class="fas fa-plus"></i>
           </router-link>
@@ -24,15 +24,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="villain in villains" :key="villain.id">
-                <td>{{ villain.id }}</td>
-                <td>{{ villain.name }}</td>
+              <tr
+                v-for="serviceprovider in serviceproviders"
+                :key="serviceprovider.id"
+              >
+                <td>{{ serviceprovider.id }}</td>
+                <td>{{ serviceprovider.name }}</td>
                 <td>
                   <router-link
                     tag="button"
                     title="Se detaljer"
                     class="button"
-                    :to="{ name: 'villain-detail', params: { id: villain.id } }"
+                    :to="{
+                      name: 'serviceprovider-detail',
+                      params: { id: serviceprovider.id },
+                    }"
                   >
                     <span class="icon">
                       <i class="fas fa-search-plus"></i>
@@ -43,7 +49,7 @@
                   <button
                     title="Slett denne referansen til NexstepAPI server?"
                     class="link card-footer-item"
-                    @click="askToDelete(villain)"
+                    @click="askToDelete(serviceprovider)"
                   >
                     <i class="fas fa-trash"></i>
                   </button>
@@ -59,7 +65,7 @@
       :message="modalMessage"
       :isOpen="showModal"
       @handleNo="closeModal"
-      @handleYes="deleteVillain"
+      @handleYes="deleteServiceprovider"
     >
     </Modal>
   </div>
@@ -70,10 +76,10 @@ import { mapActions, mapState } from 'vuex';
 import Modal from '@/components/modal';
 
 export default {
-  name: 'Villains',
+  name: 'Serviceproviders',
   data() {
     return {
-      villainToDelete: null,
+      serviceproviderToDelete: null,
       message: '',
       showModal: false,
     };
@@ -82,36 +88,36 @@ export default {
     Modal,
   },
   async created() {
-    await this.loadVillains();
+    await this.loadServiceproviders();
   },
   methods: {
-    ...mapActions(['getVillainsAction', 'deleteVillainAction']),
-    askToDelete(villain) {
-      this.villainToDelete = villain;
+    ...mapActions(['getServiceprovidersAction', 'deleteServiceproviderAction']),
+    askToDelete(serviceprovider) {
+      this.serviceproviderToDelete = serviceprovider;
       this.showModal = true;
     },
     closeModal() {
       this.showModal = false;
     },
-    async deleteVillain() {
+    async deleteServiceprovider() {
       this.closeModal();
-      if (this.villainToDelete) {
-        await this.deleteVillainAction(this.villainToDelete);
+      if (this.serviceproviderToDelete) {
+        await this.deleteServiceproviderAction(this.serviceproviderToDelete);
       }
-      await this.loadVillains();
+      await this.loadServiceproviders();
     },
-    async loadVillains() {
-      this.message = 'Vent, henter Nexstep-API serverdefinisjoner';
-      await this.getVillainsAction();
+    async loadServiceproviders() {
+      this.message = 'Vent, henter servicetilbydere';
+      await this.getServiceprovidersAction();
       this.message = '';
     },
   },
   computed: {
-    ...mapState(['villains']),
+    ...mapState(['serviceproviders']),
     modalMessage() {
       const name =
-        this.villainToDelete && this.villainToDelete.id
-          ? this.villainToDelete.name
+        this.serviceproviderToDelete && this.serviceproviderToDelete.id
+          ? this.serviceproviderToDelete.name
           : '';
       return `Vil du slette ${name} ?`;
     },

@@ -1,8 +1,5 @@
 import * as axios from 'axios';
 
-import { format } from 'date-fns';
-import { inputDateFormat } from './constants';
-
 import { API } from './config';
 
 const getEventLoggings = async function() {
@@ -70,61 +67,66 @@ const deleteEventLogging = async function(eventLogging) {
   }
 };
 
-const getVillains = async function() {
+const getServiceproviders = async function() {
   try {
-    const response = await axios.get(`${API}/villains`);
+    const response = await axios.get(`${API}/serviceproviders`);
     let data = parseList(response);
-    const villains = data.map(v => {
-      v.originDate = format(v.originDate, inputDateFormat);
-      v.fullName = `${v.firstName} ${v.lastName}`;
+    const serviceproviders = data.map(v => {
       return v;
     });
-    return villains;
+    return serviceproviders;
   } catch (error) {
     console.error(error);
     return [];
   }
 };
 
-const getVillain = async function(id) {
+const getServiceprovider = async function(id) {
   try {
-    const response = await axios.get(`${API}/villains/${id}`);
-    let villain = parseItem(response, 200);
-    villain.fullName = `${villain.firstName} ${villain.lastName}`;
-    return villain;
+    const response = await axios.get(`${API}/serviceproviders/${id}`);
+    let serviceprovider = parseItem(response, 200);
+    return serviceprovider;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const updateVillain = async function(villain) {
+const updateServiceprovider = async function(serviceprovider) {
   try {
-    const response = await axios.put(`${API}/villains/${villain.id}`, villain);
-    const updatedVillain = parseItem(response, 200);
-    return updatedVillain;
+    const response = await axios.put(
+      `${API}/serviceproviders/${serviceprovider.id}`,
+      serviceprovider
+    );
+    const updatedServiceprovider = parseItem(response, 200);
+    return updatedServiceprovider;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const addVillain = async function(villain) {
+const addServiceprovider = async function(serviceprovider) {
   try {
-    const response = await axios.post(`${API}/villains`, villain);
-    const addedVillain = parseItem(response, 201);
-    return addedVillain;
+    const response = await axios.post(
+      `${API}/serviceproviders`,
+      serviceprovider
+    );
+    const addedServiceprovider = parseItem(response, 201);
+    return addedServiceprovider;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-const deleteVillain = async function(villain) {
+const deleteServiceprovider = async function(serviceprovider) {
   try {
-    const response = await axios.delete(`${API}/villains/${villain.id}`);
+    const response = await axios.delete(
+      `${API}/serviceproviders/${serviceprovider.id}`
+    );
     parseItem(response, 200);
-    return villain.id;
+    return serviceprovider.id;
   } catch (error) {
     console.error(error);
     return null;
@@ -156,9 +158,9 @@ export const dataService = {
   updateEventLogging,
   addEventLogging,
   deleteEventLogging,
-  getVillains,
-  getVillain,
-  updateVillain,
-  addVillain,
-  deleteVillain,
+  getServiceproviders,
+  getServiceprovider,
+  updateServiceprovider,
+  addServiceprovider,
+  deleteServiceprovider,
 };

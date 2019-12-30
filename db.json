@@ -41,12 +41,12 @@
       "longmessage": "445894358 45934 ktrjk90 986 n566439%%/7/ 84rtikn "
     }
   ],
-  "villains": [
+  "serviceproviders": [
     {
       "id": 110,
       "baseurl": "http://xlnett:80",
       "name": "XL-Nett",
-      "description": "Nexstep-API server for XL-Nett-selskaper",
+      "description": "Nexstep-API server for XL-Nett-selskaper xxxx",
       "originDate": "Invalid Date",
       "fullName": "undefined undefined"
     },

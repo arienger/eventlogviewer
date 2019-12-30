@@ -29,14 +29,14 @@ export default new Router({
         import(/* webpackChunkName: "bundle.events" */ './views/event-detail.vue'),
     },
     {
-      path: '/villains',
-      name: 'villains',
+      path: '/serviceproviders',
+      name: 'serviceproviders',
       component: () =>
         import(/* webpackChunkName: "bundle.serviceproviders" */ './views/serviceproviders.vue'),
     },
     {
-      path: '/villains/:id',
-      name: 'villain-detail',
+      path: '/serviceproviders/:id',
+      name: 'serviceprovider-detail',
       // props: true,
       props: parseProps,
       component: () =>
