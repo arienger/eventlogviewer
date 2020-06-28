@@ -10,7 +10,9 @@
           <div class="content">
             <div class="field">
               <label class="label" for="id">id</label>
-              <label class="input" name="id" readonly>{{ eventlogging.id }}</label>
+              <label class="input" name="id" readonly>{{
+                eventlogging.id
+              }}</label>
             </div>
             <div class="field">
               <label class="label" for="errormessage">Årsak (lang)</label>

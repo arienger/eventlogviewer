@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8082",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "backend": "json-server --watch db.json --routes routes.json --port 8888 --delay 250 --middlewares ./node_modules/json-server-reset",
@@ -32,7 +32,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "json-server": "^0.15.0",
     "json-server-reset": "^1.1.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
   }
