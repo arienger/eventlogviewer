@@ -4,7 +4,18 @@ import { API } from './config';
 
 const getEventLoggings = async function() {
   try {
-    const response = await axios.get(`${API}/eventloggings`);
+    const response = await axios.get(
+      `${API}/logging/list/EG_BC_G0X/ALL/2020-06-07_17:05:45/0/50`,
+      {
+        headers: {
+          'eg-apps-token':
+            'eyJhbGciOiJSU0EiLCJ0eXAiOiJKV1QifQ==.eyJzdWIiOiJhc3BfZzB4QG1lc3RlcmdyLWFkYmcweDAwMDAiLCJyZWZyZXNoVG9rZW4iOiJEYTdFR25RdE00YmJ0M2J0YUNORWl3PT0iLCJleHAiOjE5MDEwOTk0MjMwOTcsImFwaUtleSI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwibWV0YURhdGEiOnt9fQ==.hkIIVl+QITQwZyfW+n7QoaIj+5Q4mjoUQ9CUqdTy/bcMsN5teP4JihgVO9VtNH1QOxwIiCPlsoyRuTIKOGAch1qZtnji9gHlZBiXZy5GlrYPfrsPbxOCtHwGXjPq67wS3/le77oqE5mJ5iqXT2AN9ARm08xJLDhqK9lKGA/aD4UiExQeFURjmGh8xIgNI32y32I2N0jNVv8e7nNJ18ZGnsOxQd/cGzFcj05FgfAAGscOxfTT3ry5xt9hI91gYyIr7GKvIG1eZ+D576I9Q87mrsRnhYHDfb+RTdBWZwO8X/JadVJY8XLdnxqmZlB8iFG8stAJhDqBTZ33wm4piZ42hA==',
+          'Access-Control-Allow-Origin': '*',
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
     let data = parseList(response);
 

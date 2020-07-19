@@ -101,16 +101,27 @@ const actions = {
 
 const getters = {
   // parameterized getters are not cached. so this is just a convenience to get the state.
-  getEventById: state => id =>
-    state.eventloggings.find(eventlogging => eventlogging.id === id),
-  getServiceproviderById: state => id =>
-    state.serviceproviders.find(serviceprovider => serviceprovider.id === id),
+  getEventById: state => eventEntityId => {
+    return state.eventloggings.find(
+      item => item.eventEntityId == eventEntityId
+    );
+  },
+  getServiceproviderById: state => id => {
+    return state.serviceproviders.find(
+      serviceprovider => serviceprovider.id === id
+    );
+  },
+  getAllEvents: state => {
+    return state.eventloggings;
+  },
 };
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state,
   mutations,
   actions,
   getters,
 });
+
+export default store;

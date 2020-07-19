@@ -18,9 +18,9 @@
             </thead>
             <tbody>
               <tr v-for="eventlogging in eventloggings" :key="eventlogging.id">
-                <td>{{ eventlogging.id }}</td>
-                <td>{{ eventlogging.timestamp }}</td>
-                <td>{{ eventlogging.severity }}</td>
+                <td>{{ eventlogging.eventEntityId }}</td>
+                <td>{{ eventlogging.eventPayload.loggedTimeStamp}}</td>
+                <td>{{ eventlogging.eventPayload.severity }}</td>
                 <td>{{ eventlogging.shortmessage }}</td>
                 <td>
                   <router-link
@@ -29,7 +29,7 @@
                     class="button"
                     :to="{
                       name: 'event-detail',
-                      params: { id: eventlogging.id },
+                      params: { id: eventlogging.eventEntityId },
                     }"
                   >
                     <span class="icon">

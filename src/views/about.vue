@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
     <div class="section content-title-group">
-      <h2 class="title">Om Hendelser fra NAV</h2>
+      <h2 class="title">Om Hendelser fra NEXSTEPHUB</h2>
       <p>
         Dette prosjektet består av en enkel webapplikasjon som samler inn og
         viser loggede data fra en eller flere hendelseslogg-kilder

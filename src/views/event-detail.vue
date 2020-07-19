@@ -9,9 +9,9 @@
         <div class="card-content">
           <div class="content">
             <div class="field">
-              <label class="label" for="id">id</label>
-              <label class="input" name="id" readonly>{{
-                eventlogging.id
+              <label class="label" for="eventEntityId">id</label>
+              <label class="input" name="eventEntityId" readonly>{{
+                eventlogging.eventEntityId
               }}</label>
             </div>
             <div class="field">
@@ -19,7 +19,7 @@
               <input
                 class="input"
                 name="errormessage"
-                v-model="eventlogging.longmessage"
+                v-model="eventlogging.eventName"
               />
             </div>
           </div>
@@ -41,6 +41,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { logger } from '@/shared/logger';
+import store from '../store';
 
 export default {
   name: 'EventDetail',
@@ -61,9 +62,7 @@ export default {
         id: undefined,
       };
     } else {
-      logger.info(`Looking for EventId: ${this.id}`);
       this.eventlogging = { ...this.getEventById(this.id) };
-      logger.info(`Found EventId: ${this.eventlogging.id}`);
     }
   },
   computed: {

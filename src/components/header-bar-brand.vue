@@ -12,7 +12,7 @@
     <div class="navbar-item nav-home">
       <span class="tour">HENDELSER</span>
       <span class="of">FRA</span>
-      <span class="events">NAV</span>
+      <span class="events">NEXSTEPHUB</span>
     </div>
     <button
       class="link navbar-burger burger"
