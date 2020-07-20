@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
     <div class="columns">
-      <div class="column is-8">
+      <div class="column is-10-desktop">
         <div class="section content-title-group">
           <h2 class="title">Hendelser</h2>
           <button class="button refresh-button" @click="loadEvents()">
@@ -13,15 +13,15 @@
                 <th>Id</th>
                 <th>Tidspunkt</th>
                 <th>Alvorlighetsgrad</th>
-                <th>Årsak (kort)</th>
+                <th>Årsak</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="eventlogging in eventloggings" :key="eventlogging.id">
                 <td>{{ eventlogging.eventEntityId }}</td>
-                <td>{{ eventlogging.eventPayload.loggedTimeStamp}}</td>
+                <td>{{ eventlogging.eventPayload.loggedTimeStamp }}</td>
                 <td>{{ eventlogging.eventPayload.severity }}</td>
-                <td>{{ eventlogging.shortmessage }}</td>
+                <td>{{ eventlogging.eventPayload.message }}</td>
                 <td>
                   <router-link
                     tag="button"

@@ -8,19 +8,184 @@
         </header>
         <div class="card-content">
           <div class="content">
-            <div class="field">
-              <label class="label" for="eventEntityId">id</label>
-              <label class="input" name="eventEntityId" readonly>{{
-                eventlogging.eventEntityId
-              }}</label>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="eventEntityId">Id</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="eventEntityId" readonly>{{
+                      eventlogging.eventEntityId
+                    }}</label>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <label class="label" for="errormessage">Årsak (lang)</label>
-              <input
-                class="input"
-                name="errormessage"
-                v-model="eventlogging.eventName"
-              />
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="company">Firma</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="company" readonly>{{
+                      eventlogging.eventPayload.company
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="severity">Alvorlighetsgrad</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="severity" readonly>{{
+                      eventlogging.eventPayload.severity
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="message">Melding</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="message" readonly>{{
+                      eventlogging.eventPayload.message
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="source">Kilde</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="source" readonly>{{
+                      eventlogging.eventPayload.callerClass
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="method">Prosedyre</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="method" readonly>{{
+                      eventlogging.eventPayload.callerMethod
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="timepoint">Tidspunkt</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="timepoint" readonly>{{
+                      eventlogging.eventPayload.loggedTime
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="logger">Logger</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="logger" readonly>{{
+                      eventlogging.eventPayload.logger
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="servername">Server/Prosess</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="servername" readonly>{{
+                      eventlogging.eventPayload.serverName
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="filename">Filnavn</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="filename" readonly>{{
+                      eventlogging.eventPayload.filename
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="line">Linje</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="line" readonly>{{
+                      eventlogging.eventPayload.callerLine
+                    }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="timestamp">Loggetidspunkt</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="input" name="timestamp" readonly>{{
+                      eventlogging.eventPayload.loggedTimeStamp
+                    }}</label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
