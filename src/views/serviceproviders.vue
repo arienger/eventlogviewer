@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8">
         <div class="section content-title-group">
-          <h2 class="title">Servicetilbydere</h2>
+          <h2 class="title">Klienter</h2>
           <button class="button refresh-button" @click="loadServiceproviders()">
             <i class="fas fa-sync"></i>
           </button>
@@ -28,8 +28,8 @@
                 v-for="serviceprovider in serviceproviders"
                 :key="serviceprovider.id"
               >
-                <td>{{ serviceprovider.id }}</td>
-                <td>{{ serviceprovider.name }}</td>
+                <td>{{ serviceprovider.eventEntityId }}</td>
+                <td>{{ serviceprovider.eventPayload.name }}</td>
                 <td>
                   <router-link
                     tag="button"
@@ -37,7 +37,7 @@
                     class="button"
                     :to="{
                       name: 'serviceprovider-detail',
-                      params: { id: serviceprovider.id },
+                      params: { id: serviceprovider.eventEntityId },
                     }"
                   >
                     <span class="icon">
@@ -47,7 +47,7 @@
                 </td>
                 <td>
                   <button
-                    title="Slett denne referansen til NexstepAPI server?"
+                    title="Slett denne klienten?"
                     class="link card-footer-item"
                     @click="askToDelete(serviceprovider)"
                   >

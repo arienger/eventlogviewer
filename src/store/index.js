@@ -11,6 +11,7 @@ import {
   DELETE_SERVICEPROVIDER,
   GET_SERVICEPROVIDERS,
   UPDATE_SERVICEPROVIDER,
+  GET_DATATYPES,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -18,6 +19,7 @@ Vue.use(Vuex);
 const state = () => ({
   eventloggings: [],
   serviceproviders: [],
+  datatypes: [],
 });
 
 const mutations = {
@@ -54,6 +56,9 @@ const mutations = {
     state.serviceproviders = [
       ...state.serviceproviders.filter(p => p.id !== serviceproviderId),
     ];
+  },
+  [GET_DATATYPES](state, datatypes) {
+    state.datatypes = datatypes;
   },
 };
 
@@ -97,6 +102,10 @@ const actions = {
     );
     commit(UPDATE_SERVICEPROVIDER, updatedServiceprovider);
   },
+  async getDataTypesAction({ commit }) {
+    const datatypes = await dataService.getDataTypes();
+    commit(GET_DATATYPES, datatypes);
+  },
 };
 
 const getters = {
@@ -106,9 +115,9 @@ const getters = {
       item => item.eventEntityId == eventEntityId
     );
   },
-  getServiceproviderById: state => id => {
+  getServiceproviderById: state => eventEntityId => {
     return state.serviceproviders.find(
-      serviceprovider => serviceprovider.id === id
+      serviceprovider => serviceprovider.eventEntityId == eventEntityId
     );
   },
   getAllEvents: state => {

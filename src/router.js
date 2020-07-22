@@ -43,6 +43,12 @@ export default new Router({
         import(/* webpackChunkName: "bundle.serviceproviders" */ './views/serviceprovider-detail.vue'),
     },
     {
+      path: '/datatypes',
+      name: 'datatypes',
+      component: () =>
+        import(/* webpackChunkName: "bundle.datatypes" */ './views/datatypes.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () =>

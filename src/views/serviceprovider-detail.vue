@@ -4,14 +4,14 @@
       <h2 class="title">{{ title }}</h2>
       <div class="card">
         <header class="card-header">
-          <p class="card-header-title">{{ serviceprovider.name }}</p>
+          <p class="card-header-title">{{ serviceprovider.eventPayload.name }}</p>
         </header>
         <div class="card-content">
           <div class="content">
             <div class="field">
-              <label class="label" for="id">Id</label>
-              <label class="input" name="id" readonly>{{
-                serviceprovider.id
+              <label class="label" for="eventEntityId">Id</label>
+              <label class="input" name="eventEntityId" readonly>{{
+                serviceprovider.eventEntityId
               }}</label>
             </div>
             <div class="field">
@@ -75,14 +75,13 @@ export default {
     if (this.isAddMode) {
       this.serviceprovider = {
         id: undefined,
-        baseurl: '',
-        name: '',
-        description: '',
       };
     } else {
-      // logger.info(`Looking for Serviceprovider id: ${this.id}`);
+      logger.info(`Looking for Serviceprovider id: ${this.id}`);
       this.serviceprovider = { ...this.getServiceproviderById(this.id) };
-      logger.info(`Found Serviceprovider Id: ${this.serviceprovider.id}`);
+      logger.info(
+        `Found Serviceprovider Id: ${this.serviceprovider.id}`
+      );
     }
   },
   computed: {

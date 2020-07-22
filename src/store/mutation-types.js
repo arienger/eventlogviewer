@@ -6,3 +6,4 @@ export const GET_SERVICEPROVIDERS = 'getServiceproviders';
 export const ADD_SERVICEPROVIDER = 'addServiceprovider';
 export const UPDATE_SERVICEPROVIDER = 'updateServiceprovider';
 export const DELETE_SERVICEPROVIDER = 'deleteServiceprovider';
+export const GET_DATATYPES = 'getDataTypes';

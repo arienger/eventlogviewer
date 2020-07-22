@@ -4,9 +4,7 @@
       <h2 class="title">Om Hendelser fra NEXSTEPHUB</h2>
       <p>
         Dette prosjektet består av en enkel webapplikasjon som samler inn og
-        viser loggede data fra en eller flere hendelseslogg-kilder
-        (servicetilbydere). Servicetilbyderne må publisere et bestemt REST-API
-        som gjør det mulig for applikasjonen å hente ut logg/hendelsesdata.
+        viser loggede data fra en instans av NexstepHub.
       </p>
       <br />
       <h3 class="title sub-title">Source Code</h3>
