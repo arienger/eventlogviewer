@@ -49,6 +49,12 @@ export default new Router({
         import(/* webpackChunkName: "bundle.datatypes" */ './views/datatypes.vue'),
     },
     {
+      path: '/subscriptions',
+      name: 'subscriptions',
+      component: () =>
+        import(/* webpackChunkName: "bundle.datatypes" */ './views/subscriptions.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () =>

@@ -12,6 +12,7 @@ import {
   GET_SERVICEPROVIDERS,
   UPDATE_SERVICEPROVIDER,
   GET_DATATYPES,
+  GET_SUBSCRIPTIONS,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -20,6 +21,7 @@ const state = () => ({
   eventloggings: [],
   serviceproviders: [],
   datatypes: [],
+  subscriptions: [],
 });
 
 const mutations = {
@@ -59,6 +61,9 @@ const mutations = {
   },
   [GET_DATATYPES](state, datatypes) {
     state.datatypes = datatypes;
+  },
+  [GET_SUBSCRIPTIONS](state, subscriptions) {
+    state.subscriptions = subscriptions;
   },
 };
 
@@ -105,6 +110,10 @@ const actions = {
   async getDataTypesAction({ commit }) {
     const datatypes = await dataService.getDataTypes();
     commit(GET_DATATYPES, datatypes);
+  },
+  async getSubscriptionsAction({ commit }) {
+    const subscriptions = await dataService.getSubscriptions();
+    commit(GET_SUBSCRIPTIONS, subscriptions);
   },
 };
 
