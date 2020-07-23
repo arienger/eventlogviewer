@@ -14,8 +14,8 @@
                 <th>Klient</th>
                 <th>Aktiv eksport</th>
                 <th>Aktiv import</th>
-                <th>Sist eksportert</th>
-                <th>Sist importert</th>
+                <th>Sist hentet fra Nexstep</th>
+                <th>Sist sendt til Nexstep</th>
               </tr>
             </thead>
             <tbody>
