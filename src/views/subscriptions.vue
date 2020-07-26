@@ -22,8 +22,22 @@
               <tr v-for="subscription in subscriptions" :key="subscription.id">
                 <td>{{ subscription.eventPayload.dataType.type }}</td>
                 <td>{{ subscription.eventPayload.client.name }}</td>
-                <td>{{ subscription.eventPayload.exportEnabled }}</td>
-                <td>{{ subscription.eventPayload.importEnabled }}</td>
+                <td style="text-align: center">
+                  <input
+                    type="checkbox"
+                    id="exportEnabled"
+                    v-model="subscription.eventPayload.exportEnabled"
+                    disabled
+                  />
+                </td>
+                <td style="text-align: center">
+                  <input
+                    type="checkbox"
+                    id="importEnabled"
+                    v-model="subscription.eventPayload.importEnabled"
+                    disabled
+                  />
+                </td>
                 <td>{{ subscription.eventPayload.lastExport }}</td>
                 <td>{{ subscription.eventPayload.lastImport }}</td>
               </tr>

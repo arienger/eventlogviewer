@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Buefy from 'buefy';
+import 'buefy/dist/buefy.css';
 
 import { dataService } from '../shared';
 import {
@@ -16,6 +18,7 @@ import {
 } from './mutation-types';
 
 Vue.use(Vuex);
+Vue.use(Buefy);
 
 const state = () => ({
   eventloggings: [],

@@ -289,9 +289,9 @@ export default {
         id: undefined,
       };
     } else {
-      logger.info(`Looking for Serviceprovider id: ${this.id}`);
+      //logger.info(`Looking for Serviceprovider id: ${this.id}`);
       this.serviceprovider = { ...this.getServiceproviderById(this.id) };
-      logger.info(`Found Serviceprovider Id: ${this.serviceprovider.id}`);
+      //logger.info(`Found Serviceprovider Id: ${this.serviceprovider.id}`);
     }
   },
   computed: {

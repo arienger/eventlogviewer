@@ -143,6 +143,11 @@ const getSubscriptions = async function() {
     const subscriptions = data.map(e => {
       return e;
     });
+    for (let sub of subscriptions) {
+      if (sub.eventPayload.exportEnabled) {
+        // console.log(sub.eventEntityId + ' has export enabled');
+      }
+    }
     return subscriptions;
   } catch (error) {
     console.error(error);
