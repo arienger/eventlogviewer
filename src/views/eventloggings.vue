@@ -1,45 +1,53 @@
 <template>
   <div class="content-container">
     <div class="columns">
-      <div class="column is-8">
+      <div class="column is-10">
         <div class="section content-title-group">
           <h2 class="title">Hendelser</h2>
           <button class="button refresh-button" @click="loadEvents()">
             <i class="fas fa-sync"></i>
           </button>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Tidspunkt</th>
-                <th>Alvorlighetsgrad</th>
-                <th>Årsak</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="eventlogging in eventloggings" :key="eventlogging.id">
-                <td>{{ eventlogging.eventEntityId }}</td>
-                <td>{{ eventlogging.eventPayload.loggedTimeStamp }}</td>
-                <td>{{ eventlogging.eventPayload.severity }}</td>
-                <td>{{ eventlogging.eventPayload.message }}</td>
-                <td>
+          <section>
+            <b-table
+              :data="eventloggings"
+              :sticky-header="stickyHeaders"
+              :height="600"
+              :scrollable="true"
+            >
+              <template slot-scope="props">
+                <b-table-column label="ID" width="35" numeric>
+                  {{ props.row.eventEntityId }}
+                </b-table-column>
+                <b-table-column label="Alvorsgrad" width="35" searchable>
+                  {{ props.row.eventPayload.severity }}
+                </b-table-column>
+                <b-table-column label="Tidspunkt" width="35">
+                  {{ props.row.eventPayload.loggedTimeStamp }}
+                </b-table-column>
+                <b-table-column
+                  label="Melding (avkortet til 80 tegn)"
+                  width="500"
+                >
+                  {{ props.row.eventPayload.message | truncate(80) }}
+                </b-table-column>
+                <b-table-column>
                   <router-link
                     tag="button"
                     title="Se detaljer"
                     class="button"
                     :to="{
                       name: 'event-detail',
-                      params: { id: eventlogging.eventEntityId },
+                      params: { id: props.row.eventEntityId },
                     }"
                   >
                     <span class="icon">
                       <i class="fas fa-search-plus"></i>
                     </span>
                   </router-link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </b-table-column>
+              </template>
+            </b-table>
+          </section>
         </div>
         <div class="notification is-info" v-show="message">{{ message }}</div>
       </div>
@@ -65,6 +73,8 @@ export default {
       eventToDelete: null,
       message: '',
       showModal: false,
+      stickyHeaders: true,
+      searchable: true,
     };
   },
   components: {
@@ -103,6 +113,14 @@ export default {
           ? this.eventToDelete.fullName
           : '';
       return `Vil du slette ${name} ?`;
+    },
+  },
+  filters: {
+    /**
+     * Filter to truncate string, accepts a length parameter
+     */
+    truncate(value, length) {
+      return value.length > length ? value.substr(0, length) + '...' : value;
     },
   },
 };
