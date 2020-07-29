@@ -1,13 +1,15 @@
 <template>
   <div class="content-container">
     <div class="columns">
-      <div class="column is-10">
+      <div class="column is-12">
         <div class="section content-title-group">
           <h2 class="title">Hendelser</h2>
           <button class="button refresh-button" @click="loadEvents()">
             <i class="fas fa-sync"></i>
           </button>
+
           <section>
+            <label>Klikk på linje for detaljer</label>
             <b-table
               :data="eventloggings"
               :columns="columns"
@@ -72,7 +74,7 @@ export default {
         },
 
         {
-          field: 'eventPayload.message',
+          field: 'eventPayload.shortMessage',
           label: 'Melding (avkortet til 80 tegn)',
           width: '80',
           searchable: true,
@@ -136,3 +138,14 @@ export default {
   },
 };
 </script>
+
+<style>
+  .is-sticky-column-one {
+    background: #23d160 !important;
+    color: white !important;
+  }
+  .is-sticky-column-two {
+    background: #167df0 !important;
+    color: white !important;
+  }
+</style>

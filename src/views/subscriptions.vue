@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
     <div class="columns">
-      <div class="column is-8">
+      <div class="column is-12">
         <div class="section content-title-group">
           <h2 class="title">Abonnementer</h2>
           <button class="button refresh-button" @click="loadSubscriptions()">
