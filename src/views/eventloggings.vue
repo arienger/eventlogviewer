@@ -10,42 +10,12 @@
           <section>
             <b-table
               :data="eventloggings"
+              :columns="columns"
               :sticky-header="stickyHeaders"
               :height="600"
               :scrollable="true"
+              @click="clickEvent"
             >
-              <template slot-scope="props">
-                <b-table-column label="ID" width="35" numeric>
-                  {{ props.row.eventEntityId }}
-                </b-table-column>
-                <b-table-column label="Alvorsgrad" width="35" searchable>
-                  {{ props.row.eventPayload.severity }}
-                </b-table-column>
-                <b-table-column label="Tidspunkt" width="35">
-                  {{ props.row.eventPayload.loggedTimeStamp }}
-                </b-table-column>
-                <b-table-column
-                  label="Melding (avkortet til 80 tegn)"
-                  width="500"
-                >
-                  {{ props.row.eventPayload.message | truncate(80) }}
-                </b-table-column>
-                <b-table-column>
-                  <router-link
-                    tag="button"
-                    title="Se detaljer"
-                    class="button"
-                    :to="{
-                      name: 'event-detail',
-                      params: { id: props.row.eventEntityId },
-                    }"
-                  >
-                    <span class="icon">
-                      <i class="fas fa-search-plus"></i>
-                    </span>
-                  </router-link>
-                </b-table-column>
-              </template>
             </b-table>
           </section>
         </div>
@@ -59,12 +29,18 @@
       @handleYes="deleteEventLogging"
     >
     </Modal>
+    <Eventdetails
+      :row="row"
+      :isOpen="showEventDetails"
+      @handleClose="closeEventDetails"
+    />
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
 import Modal from '@/components/modal';
+import Eventdetails from '@/components/eventdetails';
 
 export default {
   name: 'Eventloggings',
@@ -72,13 +48,41 @@ export default {
     return {
       eventToDelete: null,
       message: '',
+      row: null,
       showModal: false,
+      showEventDetails: false,
       stickyHeaders: true,
-      searchable: true,
+      columns: [
+        {
+          field: 'eventEntityId',
+          width: '10',
+          label: 'ID',
+        },
+        {
+          field: 'eventPayload.severity',
+          width: '35',
+          label: 'Alvorsgrad',
+          searchable: true,
+        },
+        {
+          field: 'eventPayload.loggedTimeStamp',
+          label: 'Tidspunkt',
+          width: '50',
+          searchable: true,
+        },
+
+        {
+          field: 'eventPayload.message',
+          label: 'Melding (avkortet til 80 tegn)',
+          width: '80',
+          searchable: true,
+        },
+      ],
     };
   },
   components: {
     Modal,
+    Eventdetails,
   },
   async created() {
     await this.loadEvents();
@@ -91,6 +95,13 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    closeEventDetails() {
+      this.showEventDetails = false;
+    },
+    clickEvent(row) {
+      this.showEventDetails = true;
+      this.row = row;
     },
     async deleteEventLogging() {
       this.closeModal();

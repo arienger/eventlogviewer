@@ -255,11 +255,11 @@
           @click="cancelServiceprovider()"
         >
           <i class="fas fa-undo"></i>
-          <span>Cancel</span>
+          <span>Avbryt</span>
         </button>
         <button class="link card-footer-item" @click="saveServiceprovider()">
           <i class="fas fa-save"></i>
-          <span>Save</span>
+          <span>Lagre</span>
         </button>
       </footer>
     </div>

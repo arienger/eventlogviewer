@@ -4,7 +4,7 @@ import { API } from './config';
 
 const getEventLoggings = async function() {
   try {
-    const urlPart = '/logging/list/ALL/0/1000';
+    const urlPart = '/logging/list/ALL/0/100';
     const url = `${API}` + urlPart;
     const response = await axios.get(url, {
       headers: {
