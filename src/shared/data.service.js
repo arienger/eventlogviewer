@@ -1,15 +1,19 @@
 import * as axios from 'axios';
-
-import { API } from './config';
+let authtoken = '';
+let nexstepHubBaseURL = '';
+axios.get(process.env.BASE_URL + 'config.json').then(response => {
+  authtoken = response.data.EG_APPS_TOKEN;
+  nexstepHubBaseURL = response.data.NEXSTEPHUB_BASE_URL;
+});
 
 const getEventLoggings = async function() {
   try {
+    // eslint-disable-next-line no-unused-vars
     const urlPart = '/logging/list/ALL/0/1000';
-    const url = `${API}` + urlPart;
+    const url = `${nexstepHubBaseURL}` + urlPart;
     const response = await axios.get(url, {
       headers: {
-        'eg-apps-token':
-          'eyJhbGciOiJSU0EiLCJ0eXAiOiJKV1QifQ==.eyJzdWIiOiJhc3BfZzB4QG1lc3RlcmdyLWFkYmcweDAwMDAiLCJyZWZyZXNoVG9rZW4iOiJEYTdFR25RdE00YmJ0M2J0YUNORWl3PT0iLCJleHAiOjE5MDEwOTk0MjMwOTcsImFwaUtleSI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwibWV0YURhdGEiOnt9fQ==.hkIIVl+QITQwZyfW+n7QoaIj+5Q4mjoUQ9CUqdTy/bcMsN5teP4JihgVO9VtNH1QOxwIiCPlsoyRuTIKOGAch1qZtnji9gHlZBiXZy5GlrYPfrsPbxOCtHwGXjPq67wS3/le77oqE5mJ5iqXT2AN9ARm08xJLDhqK9lKGA/aD4UiExQeFURjmGh8xIgNI32y32I2N0jNVv8e7nNJ18ZGnsOxQd/cGzFcj05FgfAAGscOxfTT3ry5xt9hI91gYyIr7GKvIG1eZ+D576I9Q87mrsRnhYHDfb+RTdBWZwO8X/JadVJY8XLdnxqmZlB8iFG8stAJhDqBTZ33wm4piZ42hA==',
+        'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
@@ -30,7 +34,7 @@ const getEventLoggings = async function() {
 
 const getEventLogging = async function(id) {
   try {
-    const response = await axios.get(`${API}/eventloggings/${id}`);
+    const response = await axios.get(`${nexstepHubBaseURL}/eventloggings/${id}`);
     let eventLogging = parseItem(response, 200);
     return eventLogging;
   } catch (error) {
@@ -42,7 +46,7 @@ const getEventLogging = async function(id) {
 const updateEventLogging = async function(eventLogging) {
   try {
     const response = await axios.put(
-      `${API}/eventloggings/${eventLogging.id}`,
+      `${nexstepHubBaseURL}/eventloggings/${eventLogging.id}`,
       eventLogging
     );
     const updatedEvent = parseItem(response, 200);
@@ -55,7 +59,7 @@ const updateEventLogging = async function(eventLogging) {
 
 const addEventLogging = async function(eventLogging) {
   try {
-    const response = await axios.post(`${API}/eventloggings`, eventLogging);
+    const response = await axios.post(`${nexstepHubBaseURL}/eventloggings`, eventLogging);
     const addedEvent = parseItem(response, 201);
     return addedEvent;
   } catch (error) {
@@ -67,7 +71,7 @@ const addEventLogging = async function(eventLogging) {
 const deleteEventLogging = async function(eventLogging) {
   try {
     const response = await axios.delete(
-      `${API}/eventloggings/${eventLogging.id}`
+      `${nexstepHubBaseURL}/eventloggings/${eventLogging.id}`
     );
     parseItem(response, 200);
     return eventLogging.id;
@@ -79,10 +83,9 @@ const deleteEventLogging = async function(eventLogging) {
 
 const getServiceproviders = async function() {
   try {
-    const response = await axios.get(`${API}/client/list`, {
+    const response = await axios.get(`${nexstepHubBaseURL}/client/list`, {
       headers: {
-        'eg-apps-token':
-          'eyJhbGciOiJSU0EiLCJ0eXAiOiJKV1QifQ==.eyJzdWIiOiJhc3BfZzB4QG1lc3RlcmdyLWFkYmcweDAwMDAiLCJyZWZyZXNoVG9rZW4iOiJEYTdFR25RdE00YmJ0M2J0YUNORWl3PT0iLCJleHAiOjE5MDEwOTk0MjMwOTcsImFwaUtleSI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwibWV0YURhdGEiOnt9fQ==.hkIIVl+QITQwZyfW+n7QoaIj+5Q4mjoUQ9CUqdTy/bcMsN5teP4JihgVO9VtNH1QOxwIiCPlsoyRuTIKOGAch1qZtnji9gHlZBiXZy5GlrYPfrsPbxOCtHwGXjPq67wS3/le77oqE5mJ5iqXT2AN9ARm08xJLDhqK9lKGA/aD4UiExQeFURjmGh8xIgNI32y32I2N0jNVv8e7nNJ18ZGnsOxQd/cGzFcj05FgfAAGscOxfTT3ry5xt9hI91gYyIr7GKvIG1eZ+D576I9Q87mrsRnhYHDfb+RTdBWZwO8X/JadVJY8XLdnxqmZlB8iFG8stAJhDqBTZ33wm4piZ42hA==',
+        'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
@@ -103,10 +106,9 @@ const getServiceproviders = async function() {
 
 const getDataTypes = async function() {
   try {
-    const response = await axios.get(`${API}/datatype/list`, {
+    const response = await axios.get(`${nexstepHubBaseURL}/datatype/list`, {
       headers: {
-        'eg-apps-token':
-          'eyJhbGciOiJSU0EiLCJ0eXAiOiJKV1QifQ==.eyJzdWIiOiJhc3BfZzB4QG1lc3RlcmdyLWFkYmcweDAwMDAiLCJyZWZyZXNoVG9rZW4iOiJEYTdFR25RdE00YmJ0M2J0YUNORWl3PT0iLCJleHAiOjE5MDEwOTk0MjMwOTcsImFwaUtleSI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwibWV0YURhdGEiOnt9fQ==.hkIIVl+QITQwZyfW+n7QoaIj+5Q4mjoUQ9CUqdTy/bcMsN5teP4JihgVO9VtNH1QOxwIiCPlsoyRuTIKOGAch1qZtnji9gHlZBiXZy5GlrYPfrsPbxOCtHwGXjPq67wS3/le77oqE5mJ5iqXT2AN9ARm08xJLDhqK9lKGA/aD4UiExQeFURjmGh8xIgNI32y32I2N0jNVv8e7nNJ18ZGnsOxQd/cGzFcj05FgfAAGscOxfTT3ry5xt9hI91gYyIr7GKvIG1eZ+D576I9Q87mrsRnhYHDfb+RTdBWZwO8X/JadVJY8XLdnxqmZlB8iFG8stAJhDqBTZ33wm4piZ42hA==',
+        'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
@@ -127,10 +129,9 @@ const getDataTypes = async function() {
 
 const getSubscriptions = async function() {
   try {
-    const response = await axios.get(`${API}/subscription/list`, {
+    const response = await axios.get(`${nexstepHubBaseURL}/subscription/list`, {
       headers: {
-        'eg-apps-token':
-          'eyJhbGciOiJSU0EiLCJ0eXAiOiJKV1QifQ==.eyJzdWIiOiJhc3BfZzB4QG1lc3RlcmdyLWFkYmcweDAwMDAiLCJyZWZyZXNoVG9rZW4iOiJEYTdFR25RdE00YmJ0M2J0YUNORWl3PT0iLCJleHAiOjE5MDEwOTk0MjMwOTcsImFwaUtleSI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwibWV0YURhdGEiOnt9fQ==.hkIIVl+QITQwZyfW+n7QoaIj+5Q4mjoUQ9CUqdTy/bcMsN5teP4JihgVO9VtNH1QOxwIiCPlsoyRuTIKOGAch1qZtnji9gHlZBiXZy5GlrYPfrsPbxOCtHwGXjPq67wS3/le77oqE5mJ5iqXT2AN9ARm08xJLDhqK9lKGA/aD4UiExQeFURjmGh8xIgNI32y32I2N0jNVv8e7nNJ18ZGnsOxQd/cGzFcj05FgfAAGscOxfTT3ry5xt9hI91gYyIr7GKvIG1eZ+D576I9Q87mrsRnhYHDfb+RTdBWZwO8X/JadVJY8XLdnxqmZlB8iFG8stAJhDqBTZ33wm4piZ42hA==',
+        'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
@@ -156,7 +157,7 @@ const getSubscriptions = async function() {
 
 const getServiceprovider = async function(id) {
   try {
-    const response = await axios.get(`${API}/serviceproviders/${id}`);
+    const response = await axios.get(`${nexstepHubBaseURL}/serviceproviders/${id}`);
     let serviceprovider = parseItem(response, 200);
     return serviceprovider;
   } catch (error) {
@@ -168,7 +169,7 @@ const getServiceprovider = async function(id) {
 const updateServiceprovider = async function(serviceprovider) {
   try {
     const response = await axios.put(
-      `${API}/serviceproviders/${serviceprovider.id}`,
+      `${nexstepHubBaseURL}/serviceproviders/${serviceprovider.id}`,
       serviceprovider
     );
     const updatedServiceprovider = parseItem(response, 200);
@@ -182,7 +183,7 @@ const updateServiceprovider = async function(serviceprovider) {
 const addServiceprovider = async function(serviceprovider) {
   try {
     const response = await axios.post(
-      `${API}/serviceproviders`,
+      `${nexstepHubBaseURL}/serviceproviders`,
       serviceprovider
     );
     const addedServiceprovider = parseItem(response, 201);

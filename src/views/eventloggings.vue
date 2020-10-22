@@ -140,12 +140,12 @@ export default {
 </script>
 
 <style>
-  .is-sticky-column-one {
-    background: #23d160 !important;
-    color: white !important;
-  }
-  .is-sticky-column-two {
-    background: #167df0 !important;
-    color: white !important;
-  }
+.is-sticky-column-one {
+  background: #23d160 !important;
+  color: white !important;
+}
+.is-sticky-column-two {
+  background: #167df0 !important;
+  color: white !important;
+}
 </style>
