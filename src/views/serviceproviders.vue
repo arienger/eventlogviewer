@@ -10,7 +10,10 @@
           <router-link
             tag="button"
             class="button add-button"
-            :to="{ name: 'serviceprovider-detail', params: { id: 0 } }"
+            :to="{
+              name: 'serviceprovider-detail',
+              params: { id: 0 },
+            }"
           >
             <i class="fas fa-plus"></i>
           </router-link>

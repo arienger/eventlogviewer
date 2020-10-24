@@ -75,9 +75,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="export_enabled" readonly>{{
-                      serviceprovider.eventPayload.exportEnabled
-                    }}</label>
+                    <input
+                      name="export_enabled"
+                      type="checkbox"
+                      id="export_enabled"
+                      v-model="serviceprovider.eventPayload.exportEnabled"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>
@@ -91,9 +95,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="import_enabled" readonly>{{
-                      serviceprovider.eventPayload.importEnabled
-                    }}</label>
+                    <input
+                      name="import_enabled"
+                      type="checkbox"
+                      id="import_enabled"
+                      v-model="serviceprovider.eventPayload.importEnabled"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>
@@ -179,9 +187,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="bypassZipping" readonly>{{
-                      serviceprovider.eventPayload.bypassZipping
-                    }}</label>
+                    <input
+                      name="bypassZipping"
+                      type="checkbox"
+                      id="bypassZipping"
+                      v-model="serviceprovider.eventPayload.bypassZipping"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>
@@ -268,7 +280,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { logger } from '@/shared/logger';
 
 export default {
   name: 'ServiceproviderDetail',
