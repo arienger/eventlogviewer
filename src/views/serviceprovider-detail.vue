@@ -80,7 +80,6 @@
                       type="checkbox"
                       id="export_enabled"
                       v-model="serviceprovider.eventPayload.exportEnabled"
-                      disabled
                     />
                   </div>
                 </div>
@@ -100,7 +99,6 @@
                       type="checkbox"
                       id="import_enabled"
                       v-model="serviceprovider.eventPayload.importEnabled"
-                      disabled
                     />
                   </div>
                 </div>
@@ -192,7 +190,6 @@
                       type="checkbox"
                       id="bypassZipping"
                       v-model="serviceprovider.eventPayload.bypassZipping"
-                      disabled
                     />
                   </div>
                 </div>
@@ -251,7 +248,7 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="domain" readonly>{{
+                    <label class="input" name="domain">{{
                       serviceprovider.eventPayload.domain
                     }}</label>
                   </div>
@@ -320,7 +317,7 @@ export default {
       this.$router.push({ name: 'serviceproviders' });
     },
     async saveServiceprovider() {
-      this.serviceprovider.id
+      this.serviceprovider.eventPayload.id
         ? await this.updateServiceproviderAction(this.serviceprovider)
         : await this.addServiceproviderAction(this.serviceprovider);
       this.$router.push({ name: 'serviceproviders' });

@@ -34,7 +34,9 @@ const getEventLoggings = async function() {
 
 const getEventLogging = async function(id) {
   try {
-    const response = await axios.get(`${nexstepHubBaseURL}/eventloggings/${id}`);
+    const response = await axios.get(
+      `${nexstepHubBaseURL}/eventloggings/${id}`
+    );
     let eventLogging = parseItem(response, 200);
     return eventLogging;
   } catch (error) {
@@ -59,7 +61,10 @@ const updateEventLogging = async function(eventLogging) {
 
 const addEventLogging = async function(eventLogging) {
   try {
-    const response = await axios.post(`${nexstepHubBaseURL}/eventloggings`, eventLogging);
+    const response = await axios.post(
+      `${nexstepHubBaseURL}/eventloggings`,
+      eventLogging
+    );
     const addedEvent = parseItem(response, 201);
     return addedEvent;
   } catch (error) {
@@ -101,6 +106,83 @@ const getServiceproviders = async function() {
   } catch (error) {
     console.error(error);
     return [];
+  }
+};
+
+const getServiceprovider = async function(id) {
+  try {
+    const response = await axios.get(`${nexstepHubBaseURL}/client/get/${id}`, {
+      headers: {
+        'eg-apps-token': `${authtoken}`,
+        'Access-Control-Allow-Origin': '*',
+        Accept: '*/*',
+        'Content-Type': 'application/json',
+      },
+    });
+    let serviceprovider = parseItem(response, 200);
+    return serviceprovider;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const updateServiceprovider = async function(serviceprovider) {
+  try {
+    const response = await axios.put(`${nexstepHubBaseURL}/client/update/}`, {
+      serviceprovider,
+      headers: {
+        'eg-apps-token': `${authtoken}`,
+        'Access-Control-Allow-Origin': '*',
+        Accept: '*/*',
+        'Content-Type': 'application/json',
+      },
+    });
+    const updatedServiceprovider = parseItem(response, 200);
+    return updatedServiceprovider;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const addServiceprovider = async function(serviceprovider) {
+  try {
+    const response = await axios.post(`${nexstepHubBaseURL}/client/add/}`, {
+      serviceprovider,
+      headers: {
+        'eg-apps-token': `${authtoken}`,
+        'Access-Control-Allow-Origin': '*',
+        Accept: '*/*',
+        'Content-Type': 'application/json',
+      },
+    });
+    const addedServiceprovider = parseItem(response, 201);
+    return addedServiceprovider;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const deleteServiceprovider = async function(serviceprovider) {
+  try {
+    const response = await axios.delete(
+      `${nexstepHubBaseURL}/client/delete/${serviceprovider.eventPayload.id}`,
+      {
+        headers: {
+          'eg-apps-token': `${authtoken}`,
+          'Access-Control-Allow-Origin': '*',
+          Accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    parseItem(response, 200);
+    return serviceprovider.id;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };
 
@@ -152,58 +234,6 @@ const getSubscriptions = async function() {
   } catch (error) {
     console.error(error);
     return [];
-  }
-};
-
-const getServiceprovider = async function(id) {
-  try {
-    const response = await axios.get(`${nexstepHubBaseURL}/serviceproviders/${id}`);
-    let serviceprovider = parseItem(response, 200);
-    return serviceprovider;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
-
-const updateServiceprovider = async function(serviceprovider) {
-  try {
-    const response = await axios.put(
-      `${nexstepHubBaseURL}/serviceproviders/${serviceprovider.id}`,
-      serviceprovider
-    );
-    const updatedServiceprovider = parseItem(response, 200);
-    return updatedServiceprovider;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
-
-const addServiceprovider = async function(serviceprovider) {
-  try {
-    const response = await axios.post(
-      `${nexstepHubBaseURL}/serviceproviders`,
-      serviceprovider
-    );
-    const addedServiceprovider = parseItem(response, 201);
-    return addedServiceprovider;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
-
-const deleteServiceprovider = async function(serviceprovider) {
-  try {
-    const response = await axios.delete(
-      `${API}/serviceproviders/${serviceprovider.id}`
-    );
-    parseItem(response, 200);
-    return serviceprovider.id;
-  } catch (error) {
-    console.error(error);
-    return null;
   }
 };
 

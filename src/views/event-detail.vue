@@ -16,7 +16,7 @@
                 <div class="field">
                   <div class="control">
                     <label class="input" name="eventEntityId" readonly>{{
-                      eventlogging.eventEntityId
+                      eventlogging.eventPayload.eventEntityId
                     }}</label>
                   </div>
                 </div>
@@ -205,8 +205,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { logger } from '@/shared/logger';
-import store from '../store';
 
 export default {
   name: 'EventDetail',

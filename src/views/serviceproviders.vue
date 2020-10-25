@@ -50,7 +50,7 @@
                 </td>
                 <td>
                   <button
-                    title="Slett denne klienten?"
+                    title="Slett denne klienten"
                     class="link card-footer-item"
                     @click="askToDelete(serviceprovider)"
                   >
@@ -119,8 +119,9 @@ export default {
     ...mapState(['serviceproviders']),
     modalMessage() {
       const name =
-        this.serviceproviderToDelete && this.serviceproviderToDelete.id
-          ? this.serviceproviderToDelete.name
+        this.serviceproviderToDelete &&
+        this.serviceproviderToDelete.eventPayload.id
+          ? this.serviceproviderToDelete.eventPayload.name
           : '';
       return `Vil du slette ${name} ?`;
     },

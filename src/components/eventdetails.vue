@@ -14,7 +14,11 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input class="input" v-model="row.eventEntityId" readonly />
+                  <input
+                    class="input"
+                    v-model="row.eventPayload.eventEntityId"
+                    readonly
+                  />
                 </div>
               </div>
             </div>
