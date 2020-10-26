@@ -129,13 +129,33 @@ const getServiceprovider = async function(id) {
 
 const updateServiceprovider = async function(serviceprovider) {
   try {
-    const response = await axios.put(`${nexstepHubBaseURL}/client/update/}`, {
-      serviceprovider,
+    const response = await axios({
+      method: 'post',
+      url: `${nexstepHubBaseURL}/client/update`,
       headers: {
         'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
+      },
+      data: {
+        id: `${serviceprovider.eventPayload.id}`,
+        name: `${serviceprovider.eventPayload.name}`,
+        clientType: `${serviceprovider.eventPayload.clientType}`,
+        clientId: `${serviceprovider.eventPayload.clientId}`,
+        clientSecret: `${serviceprovider.eventPayload.clientSecret}`,
+        exportEnabled: `${serviceprovider.eventPayload.exportEnabled}`,
+        importEnabled: `${serviceprovider.eventPayload.importEnabled}`,
+        audience: `${serviceprovider.eventPayload.audience}`,
+        grantType: `${serviceprovider.eventPayload.grantType}`,
+        urlForGetToken: `${serviceprovider.eventPayload.urlForGetToken}`,
+        urlForExport: `${serviceprovider.eventPayload.urlForExport}`,
+        urlForImport: `${serviceprovider.eventPayload.urlForImport}`,
+        bypassZipping: `${serviceprovider.eventPayload.bypassZipping}`,
+        applicationId: `${serviceprovider.eventPayload.applicationId}`,
+        nexstepCompany: `${serviceprovider.eventPayload.nexstepCompany}`,
+        nexstepFileGroup: `${serviceprovider.eventPayload.nexstepFileGroup}`,
+        domain: `${serviceprovider.eventPayload.domain}`,
       },
     });
     const updatedServiceprovider = parseItem(response, 200);
@@ -148,13 +168,32 @@ const updateServiceprovider = async function(serviceprovider) {
 
 const addServiceprovider = async function(serviceprovider) {
   try {
-    const response = await axios.post(`${nexstepHubBaseURL}/client/add/}`, {
-      serviceprovider,
+    const response = await axios({
+      method: 'post',
+      url: `${nexstepHubBaseURL}/client/add`,
       headers: {
         'eg-apps-token': `${authtoken}`,
         'Access-Control-Allow-Origin': '*',
         Accept: '*/*',
         'Content-Type': 'application/json',
+      },
+      data: {
+        name: `${serviceprovider.eventPayload.name}`,
+        clientType: `${serviceprovider.eventPayload.clientType}`,
+        clientId: `${serviceprovider.eventPayload.clientId}`,
+        clientSecret: `${serviceprovider.eventPayload.clientSecret}`,
+        exportEnabled: `${serviceprovider.eventPayload.exportEnabled}`,
+        importEnabled: `${serviceprovider.eventPayload.importEnabled}`,
+        audience: `${serviceprovider.eventPayload.audience}`,
+        grantType: `${serviceprovider.eventPayload.grantType}`,
+        urlForGetToken: `${serviceprovider.eventPayload.urlForGetToken}`,
+        urlForExport: `${serviceprovider.eventPayload.urlForExport}`,
+        urlForImport: `${serviceprovider.eventPayload.urlForImport}`,
+        bypassZipping: `${serviceprovider.eventPayload.bypassZipping}`,
+        applicationId: `${serviceprovider.eventPayload.applicationId}`,
+        nexstepCompany: `${serviceprovider.eventPayload.nexstepCompany}`,
+        nexstepFileGroup: `${serviceprovider.eventPayload.nexstepFileGroup}`,
+        domain: `${serviceprovider.eventPayload.domain}`,
       },
     });
     const addedServiceprovider = parseItem(response, 201);

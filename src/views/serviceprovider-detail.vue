@@ -17,9 +17,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="name" readonly>{{
-                      serviceprovider.eventPayload.name
-                    }}</label>
+                    <input
+                      id="name"
+                      class="input"
+                      name="name"
+                      required
+                      v-model="serviceprovider.eventPayload.name"
+                    />
                   </div>
                 </div>
               </div>
