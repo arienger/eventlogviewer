@@ -348,6 +348,21 @@ export default {
       this.serviceprovider.eventPayload = {
         id: null,
         name: ' ',
+        clientType: ' ',
+        clientId: ' ',
+        clientSecret: ' ',
+        exportEnabled: false,
+        importEnabled: false,
+        audience: ' ',
+        grantType: ' ',
+        urlForGetToken: ' ',
+        urlForExport: ' ',
+        urlForImport: ' ',
+        bypassZipping: true,
+        applicationId: ' ',
+        nexstepCompany: ' ',
+        nexstepFileGroup: ' ',
+        domain: ' ',
       };
     } else {
       //logger.info(`Looking for Serviceprovider id: ${this.id}`);

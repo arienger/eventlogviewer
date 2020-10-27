@@ -178,6 +178,7 @@ const addServiceprovider = async function(serviceprovider) {
         'Content-Type': 'application/json',
       },
       data: {
+        id: `${serviceprovider.eventPayload.id}`,
         name: `${serviceprovider.eventPayload.name}`,
         clientType: `${serviceprovider.eventPayload.clientType}`,
         clientId: `${serviceprovider.eventPayload.clientId}`,
