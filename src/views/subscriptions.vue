@@ -14,8 +14,9 @@
                 <th>Klient</th>
                 <th>Aktiv eksport</th>
                 <th>Aktiv import</th>
-                <th>Sist hentet fra Nexstep</th>
-                <th>Sist sendt til Nexstep</th>
+                <th>Sist eksportert ut</th>
+                <th>Sist importert inn</th>
+                <th>Utelat endringer fra predefinerte brukere</th>
               </tr>
             </thead>
             <tbody>
@@ -40,6 +41,17 @@
                 </td>
                 <td>{{ subscription.eventPayload.lastExport }}</td>
                 <td>{{ subscription.eventPayload.lastImport }}</td>
+                <td style="text-align: center">
+                  <input
+                    type="checkbox"
+                    id="excludeChangesFromPredefinedUsers"
+                    v-model="
+                      subscription.eventPayload
+                        .excludeChangesFromPredefinedUsers
+                    "
+                    disabled
+                  />
+                </td>
               </tr>
             </tbody>
           </table>

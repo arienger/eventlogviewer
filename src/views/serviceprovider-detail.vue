@@ -35,9 +35,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="client_type" readonly>{{
-                      serviceprovider.eventPayload.clientType
-                    }}</label>
+                    <input
+                      id="client_type"
+                      class="input"
+                      name="client_type"
+                      required
+                      v-model="serviceprovider.eventPayload.clientType"
+                    />
                   </div>
                 </div>
               </div>
@@ -49,9 +53,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="client_id" readonly>{{
-                      serviceprovider.eventPayload.clientId
-                    }}</label>
+                    <input
+                      id="client_id"
+                      class="input"
+                      name="client_id"
+                      required
+                      v-model="serviceprovider.eventPayload.clientId"
+                    />
                   </div>
                 </div>
               </div>
@@ -63,9 +71,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="client_secret" readonly>{{
-                      serviceprovider.eventPayload.clientSecret
-                    }}</label>
+                    <input
+                      id="client_secret"
+                      class="input"
+                      name="client_secret"
+                      required
+                      v-model="serviceprovider.eventPayload.clientSecret"
+                    />
                   </div>
                 </div>
               </div>
@@ -115,9 +127,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="audience" readonly>{{
-                      serviceprovider.eventPayload.audience
-                    }}</label>
+                    <input
+                      id="audience"
+                      class="input"
+                      name="audience"
+                      required
+                      v-model="serviceprovider.eventPayload.audience"
+                    />
                   </div>
                 </div>
               </div>
@@ -129,9 +145,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="grantType" readonly>{{
-                      serviceprovider.eventPayload.grantType
-                    }}</label>
+                    <input
+                      id="grantType"
+                      class="input"
+                      name="grantType"
+                      required
+                      v-model="serviceprovider.eventPayload.grantType"
+                    />
                   </div>
                 </div>
               </div>
@@ -145,9 +165,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="urlForGetToken" readonly>{{
-                      serviceprovider.eventPayload.urlForGetToken
-                    }}</label>
+                    <input
+                      id="urlForGetToken"
+                      class="input"
+                      name="urlForGetToken"
+                      required
+                      v-model="serviceprovider.eventPayload.urlForGetToken"
+                    />
                   </div>
                 </div>
               </div>
@@ -159,9 +183,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="urlForExport" readonly>{{
-                      serviceprovider.eventPayload.urlForExport
-                    }}</label>
+                    <input
+                      id="urlForExport"
+                      class="input"
+                      name="urlForExport"
+                      required
+                      v-model="serviceprovider.eventPayload.urlForExport"
+                    />
                   </div>
                 </div>
               </div>
@@ -173,9 +201,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="urlForImport" readonly>{{
-                      serviceprovider.eventPayload.urlForImport
-                    }}</label>
+                    <input
+                      id="urlForImport"
+                      class="input"
+                      name="urlForImport"
+                      required
+                      v-model="serviceprovider.eventPayload.urlForImport"
+                    />
                   </div>
                 </div>
               </div>
@@ -206,9 +238,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="applicationId" readonly>{{
-                      serviceprovider.eventPayload.applicationId
-                    }}</label>
+                    <input
+                      id="applicationId"
+                      class="input"
+                      name="applicationId"
+                      required
+                      v-model="serviceprovider.eventPayload.applicationId"
+                    />
                   </div>
                 </div>
               </div>
@@ -222,9 +258,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="nexstepCompany" readonly>{{
-                      serviceprovider.eventPayload.nexstepCompany
-                    }}</label>
+                    <input
+                      id="nexstepCompany"
+                      class="input"
+                      name="nexstepCompany"
+                      required
+                      v-model="serviceprovider.eventPayload.nexstepCompany"
+                    />
                   </div>
                 </div>
               </div>
@@ -238,9 +278,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="nexstepFileGroup" readonly>{{
-                      serviceprovider.eventPayload.nexstepFileGroup
-                    }}</label>
+                    <input
+                      id="nexstepFileGroup"
+                      class="input"
+                      name="nexstepFileGroup"
+                      required
+                      v-model="serviceprovider.eventPayload.nexstepFileGroup"
+                    />
                   </div>
                 </div>
               </div>
@@ -252,9 +296,13 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <label class="input" name="domain">{{
-                      serviceprovider.eventPayload.domain
-                    }}</label>
+                    <input
+                      id="domain"
+                      class="input"
+                      name="domain"
+                      required
+                      v-model="serviceprovider.eventPayload.domain"
+                    />
                   </div>
                 </div>
               </div>
@@ -297,8 +345,9 @@ export default {
   },
   created() {
     if (this.isAddMode) {
-      this.serviceprovider = {
-        id: undefined,
+      this.serviceprovider.eventPayload = {
+        id: null,
+        name: ' ',
       };
     } else {
       //logger.info(`Looking for Serviceprovider id: ${this.id}`);
