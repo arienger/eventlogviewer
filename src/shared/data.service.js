@@ -1,4 +1,10 @@
+import Vue from 'vue';
+import VueToast from 'vue-toast-notification';
+// Import one of available themes
+import 'vue-toast-notification/dist/theme-default.css';
 import * as axios from 'axios';
+Vue.use(VueToast);
+
 let authtoken = '';
 let nexstepHubBaseURL = '';
 axios.get(process.env.BASE_URL + 'config.json').then(response => {
@@ -130,7 +136,7 @@ const getServiceprovider = async function(id) {
 const updateServiceprovider = async function(serviceprovider) {
   try {
     const response = await axios({
-      method: 'post',
+      method: 'put',
       url: `${nexstepHubBaseURL}/client/update`,
       headers: {
         'eg-apps-token': `${authtoken}`,
@@ -159,8 +165,20 @@ const updateServiceprovider = async function(serviceprovider) {
       },
     });
     const updatedServiceprovider = parseItem(response, 200);
+    Vue.$toast.open({
+      message: 'Klient oppdatert',
+      type: 'success',
+      position: 'top-right',
+      duration: 2000,
+    });
     return updatedServiceprovider;
   } catch (error) {
+    Vue.$toast.open({
+      message: 'Feil ved endring av klient',
+      type: 'error',
+      position: 'top-right',
+      duration: 5000,
+    });
     console.error(error);
     return null;
   }
@@ -198,8 +216,20 @@ const addServiceprovider = async function(serviceprovider) {
       },
     });
     const addedServiceprovider = parseItem(response, 201);
+    Vue.$toast.open({
+      message: 'Ny klient lagret',
+      type: 'success',
+      position: 'top-right',
+      duration: 2000,
+    });
     return addedServiceprovider;
   } catch (error) {
+    Vue.$toast.open({
+      message: 'Feil ved lagring av klient',
+      type: 'error',
+      position: 'top-right',
+      duration: 5000,
+    });
     console.error(error);
     return null;
   }
